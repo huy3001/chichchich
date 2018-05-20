@@ -192,7 +192,7 @@ function storevilla_scripts() {
 
 	/*----------------- Google Fonts --------------------------------------*/
 	$storevilla_font_args = array(
-        'family' => 'Open+Sans:400,300,400,600,600,700|Lato:400,300,300,400,700',
+        'family' => 'Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:300,300i,400,400i,700,700i&amp;subset=vietnamese',
     );
     wp_enqueue_style('google-fonts', add_query_arg( $storevilla_font_args, "//fonts.googleapis.com/css" ) );
 
