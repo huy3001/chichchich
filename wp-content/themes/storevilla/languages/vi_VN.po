@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-12 11:30+0000\n"
 "POT-Revision-Date: Wed Aug 17 2016 17:04:12 GMT+0545 (Nepal Standard Time)\n"
-"PO-Revision-Date: 2018-05-21 22:40+0700\n"
+"PO-Revision-Date: 2018-05-22 21:51+0700\n"
 "Language-Team: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
@@ -438,88 +438,92 @@ msgstr "Vùng tùy chỉnh CSS"
 
 #: inc/extras.php:580
 msgid "Three different blog layouts"
-msgstr ""
+msgstr "Ba bố cục blog khác nhau"
 
 #: inc/extras.php:581
 msgid "Our team member section"
-msgstr ""
+msgstr "Vùng thành viên nhóm của chúng tôi"
 
 #: inc/extras.php:582
 msgid "Testimonial section"
-msgstr ""
+msgstr "Vùng chứng thực"
 
 #: inc/extras.php:583
 msgid "Multiple preloader options"
-msgstr ""
+msgstr "Nhiều tùy chọn tải trước"
 
 #: inc/extras.php:584
 msgid "Responsive retina ready theme"
-msgstr ""
+msgstr "Chủ đề sẵn sàng cho hiển thị linh hoạt rõ nét"
 
 #: inc/extras.php:585
 msgid "4 Page layouts (No sidebar, right sidebar, left sidebar, both sidebar)"
 msgstr ""
+"Bố cục 4 trang (Không có thanh bên, thanh bên phải, thanh bên trái, cả hai "
+"thanh bên)"
 
 #: inc/extras.php:586
 msgid "Fully SEO optimized (schema)"
-msgstr ""
+msgstr "Tối ưu hóa SEO hoàn toàn (lược đồ)"
 
 #: inc/extras.php:587
 msgid "Fast loading"
-msgstr ""
+msgstr "Tải nhanh"
 
 #: inc/extras.php:588
 msgid "A perfect theme to start your eCommerce store of any kind!"
 msgstr ""
+"Một chủ đề hoàn hảo để bắt đầu cửa hàng thương mại điện tử của bạn dưới mọi "
+"hình thức!"
 
 #: inc/extras.php:591
 msgid "Buy Now"
-msgstr ""
+msgstr "Mua Ngay"
 
 #: inc/extras.php:612
 msgid "Sale!"
-msgstr ""
+msgstr "Giảm giá!"
 
 #: inc/extras.php:664
 msgid "View Details"
-msgstr ""
+msgstr "Xem Chi tiết"
 
 #: inc/extras.php:700
 msgid "Add To Wishlist"
-msgstr ""
+msgstr "Thêm vào Danh sách yêu thích"
 
 #: inc/extras.php:831
 msgid "View your shopping cart"
-msgstr ""
+msgstr "Xem giỏ hàng của bạn"
 
 #: inc/hooks.php:102
 msgid "Install Required Plugins"
-msgstr ""
+msgstr "Cài đặt Phần mở rộng Cần thiết"
 
 #: inc/hooks.php:103
 msgid "Install Plugins"
-msgstr ""
+msgstr "Cài đặt Phần mở rộng"
 
 #: inc/hooks.php:104
 #, php-format
 msgid "Installing Plugin: %s"
-msgstr ""
+msgstr "Đang cài đặt phần mở rộng: %s"
 
 #: inc/hooks.php:105
 msgid "Something went wrong with the plugin API."
-msgstr ""
+msgstr "Có lỗi với API phần mở rộng."
 
 #: inc/hooks.php:106
 #, php-format
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
-msgstr[0] ""
+msgstr[0] "Chủ đề này yêu cầu các phần mở rộng sau: %1$s."
 
 #: inc/hooks.php:109
 #, php-format
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
-msgstr[0] ""
+msgstr[0] "Chủ đề này khuyến nghị sử dụng các phần mở rộng sau: %1$s."
 
 #: inc/hooks.php:112
 #, php-format
@@ -529,7 +533,7 @@ msgid ""
 msgid_plural ""
 "Sorry, but you do not have the correct permissions to install the %1$s "
 "plugins."
-msgstr[0] ""
+msgstr[0] "Xin lỗi, nhưng bạn không có quyền để cài đặt phần mở rộng %1$s."
 
 #: inc/hooks.php:115
 #, php-format
@@ -540,12 +544,14 @@ msgid_plural ""
 "The following plugins need to be updated to their latest version to ensure "
 "maximum compatibility with this theme: %1$s."
 msgstr[0] ""
+"Các phần mở rộng sau đây cần phải được cập nhật lên phiên bản mới nhất của "
+"nó để đảm bảo khả năng tương thích tối đa với chủ đề này: %1$s."
 
 #: inc/hooks.php:118
 #, php-format
 msgid "There is an update available for: %1$s."
 msgid_plural "There are updates available for the following plugins: %1$s."
-msgstr[0] ""
+msgstr[0] "Có một bản cập nhật có sẵn cho: %1$s."
 
 #: inc/hooks.php:121
 #, php-format
@@ -554,19 +560,19 @@ msgid ""
 msgid_plural ""
 "Sorry, but you do not have the correct permissions to update the %1$s "
 "plugins."
-msgstr[0] ""
+msgstr[0] "Xin lỗi, nhưng bạn không có quyền để cập nhật phần mở rộng %1$s."
 
 #: inc/hooks.php:124
 #, php-format
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
-msgstr[0] ""
+msgstr[0] "Các phần mở rộng cần thiết sau đây hiện không hoạt động: %1$s."
 
 #: inc/hooks.php:127
 #, php-format
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
-msgstr[0] ""
+msgstr[0] "Các phần mở rộng được đề xuất sau đây hiện không hoạt động: %1$s."
 
 #: inc/hooks.php:130
 #, php-format
@@ -576,40 +582,40 @@ msgid ""
 msgid_plural ""
 "Sorry, but you do not have the correct permissions to activate the %1$s "
 "plugins."
-msgstr[0] ""
+msgstr[0] "Xin lỗi, nhưng bạn không có quyền để kích hoạt phần mở rộng %1$s."
 
 #: inc/hooks.php:133
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
-msgstr[0] ""
+msgstr[0] "Bắt đầu cài đặt phần mở rộng"
 
 #: inc/hooks.php:136
 msgid "Begin updating plugin"
 msgid_plural "Begin updating plugins"
-msgstr[0] ""
+msgstr[0] "Bắt đầu cập nhật phần mở rộng"
 
 #: inc/hooks.php:139
 msgid "Begin activating plugin"
 msgid_plural "Begin activating plugins"
-msgstr[0] ""
+msgstr[0] "Bắt đầu kích hoạt phần mở rộng"
 
 #: inc/hooks.php:142
 msgid "Return to Required Plugins Installer"
-msgstr ""
+msgstr "Quay lại Trình cài đặt Phần mở rộng Bắt buộc"
 
 #: inc/hooks.php:143
 msgid "Plugin activated successfully."
-msgstr ""
+msgstr "Phần mở rộng đã được kích hoạt thành công."
 
 #: inc/hooks.php:144
 msgid "The following plugin was activated successfully:"
 msgid_plural "The following plugins were activated successfully:"
-msgstr[0] ""
+msgstr[0] "Các phần mở rộng sau đã được kích hoạt thành công:"
 
 #: inc/hooks.php:145
 #, php-format
 msgid "No action taken. Plugin %1$s was already active."
-msgstr ""
+msgstr "Không có hành động. Phần mở rộng %1$s đã hoạt động."
 
 #: inc/hooks.php:146
 #, php-format
@@ -617,430 +623,445 @@ msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
 "Please update the plugin."
 msgstr ""
+"Phần mở rộng chưa được kích hoạt. Cần có phiên bản %s cao hơn cho chủ đề "
+"này. Vui lòng cập nhật plugin."
 
 #: inc/hooks.php:147
 #, php-format
 msgid "All plugins installed and activated successfully. %1$s"
-msgstr ""
+msgstr "Tất cả các phần mở rộng được cài đặt và kích hoạt thành công. %1$s"
 
 #: inc/hooks.php:148
 msgid "Please contact the administrator of this site for help."
-msgstr ""
+msgstr "Vui lòng liên hệ với quản trị viên của trang web này để được trợ giúp."
 
 #: inc/storevilla-widget.php:19
 msgid "SV: Woo Latest Category Product"
-msgstr ""
+msgstr "SV: Danh mục sản phẩm mới nhất Woo"
 
 #: inc/storevilla-widget.php:20
 msgid "A widget that shows WooCommerce category latest product."
-msgstr ""
+msgstr "Một tiện ích hiển thị sản phẩm mới nhất của WooCommerce."
 
 #: inc/storevilla-widget.php:28 inc/storevilla-widget.php:493
 #: inc/storevilla-widget.php:753
 msgid "Category"
-msgstr ""
+msgstr "Danh mục"
 
 #: inc/storevilla-widget.php:29 inc/storevilla-widget.php:566
 #: inc/storevilla-widget.php:752
 msgid "Latest Product"
-msgstr ""
+msgstr "Sản phẩm Mới nhất"
 
 #: inc/storevilla-widget.php:30 inc/storevilla-widget.php:568
 #: inc/storevilla-widget.php:755
 msgid "Feature Product"
-msgstr ""
+msgstr "Sản phẩm Nổi bật"
 
 #: inc/storevilla-widget.php:53 inc/storevilla-widget.php:82
 #: inc/storevilla-widget.php:239 inc/storevilla-widget.php:815
 #: inc/storevilla-widget.php:860 inc/storevilla-widget.php:906
 msgid "Select Product Category"
-msgstr ""
+msgstr "Chọn Danh mục Sản phẩm"
 
 #: inc/storevilla-widget.php:63 inc/storevilla-widget.php:576
 msgid "Top Title"
-msgstr ""
+msgstr "Tiêu đề Trên đầu"
 
 #: inc/storevilla-widget.php:69 inc/storevilla-widget.php:582
 msgid "Product Main Title"
-msgstr ""
+msgstr "Tiêu đề Chính Sản phẩm"
 
 #: inc/storevilla-widget.php:75 inc/storevilla-widget.php:588
 #: inc/storevilla-widget.php:808 inc/storevilla-widget.php:853
 #: inc/storevilla-widget.php:899
 msgid "Select Product Type"
-msgstr ""
+msgstr "Chọn Loại Sản phẩm"
 
 #: inc/storevilla-widget.php:89 inc/storevilla-widget.php:246
 #: inc/storevilla-widget.php:595 inc/storevilla-widget.php:822
 #: inc/storevilla-widget.php:867 inc/storevilla-widget.php:914
 msgid "Enter Number of Products Show"
-msgstr ""
+msgstr "Nhập Số lượng Sản phẩm Hiện"
 
 #: inc/storevilla-widget.php:185
 msgid "SV: Woo Category With Product"
-msgstr ""
+msgstr "SV: Danh mục Với Sản phẩm Woo"
 
 #: inc/storevilla-widget.php:186
 msgid ""
 "A widget that shows woocommerce category feature image with selected "
 "category products"
 msgstr ""
+"Một tiện ích hiển thị hình ảnh nổi bật danh mục thương mại điện tử với các "
+"sản phẩm danh mục được chọn"
 
 #: inc/storevilla-widget.php:193
 msgid "Right Align Category Image"
-msgstr ""
+msgstr "Hình ảnh Danh mục Căn lề Bên phải"
 
 #: inc/storevilla-widget.php:194
 msgid "Left Align Category Image"
-msgstr ""
+msgstr "Hình ảnh Danh mục Căn lề Bên trái"
 
 #: inc/storevilla-widget.php:226
 msgid "Product Category Main Title"
-msgstr ""
+msgstr "Tieu đề Chính Danh mục Sản phẩm"
 
 #: inc/storevilla-widget.php:232
 msgid "Select Display Style (Image Alignment)"
-msgstr ""
+msgstr "Chọn Kiểu Hiển thị (Căn chỉnh hình ảnh)"
 
 #: inc/storevilla-widget.php:303
 msgid "View All"
-msgstr ""
+msgstr "Xem Tất cả"
 
 #: inc/storevilla-widget.php:376
 msgid "SV: Woo Category Section"
-msgstr ""
+msgstr "SV: Vùng Danh mục Woo"
 
 #: inc/storevilla-widget.php:377
 msgid "A widget that shows WooCommerce category"
-msgstr ""
+msgstr "Một tiện ích hiển thị danh mục WooCommerce"
 
 #: inc/storevilla-widget.php:412
 msgid "Category Full Background Image"
-msgstr ""
+msgstr "Hình nền Đầy đủ của Danh mục"
 
 #: inc/storevilla-widget.php:418
 msgid "Category Top Title"
-msgstr ""
+msgstr "Tiêu đề Trên đầu của Danh mục"
 
 #: inc/storevilla-widget.php:423
 msgid "Category Main Title"
-msgstr ""
+msgstr "Tiêu đề Chính của Danh mục"
 
 #: inc/storevilla-widget.php:429
 msgid "Select Category"
-msgstr ""
+msgstr "Chọn Danh mục"
 
 #: inc/storevilla-widget.php:490
 msgid "Products"
-msgstr ""
+msgstr "Các sản phẩm"
 
 #: inc/storevilla-widget.php:494
 msgid "Product"
-msgstr ""
+msgstr "Sản phẩm"
 
 #: inc/storevilla-widget.php:557
 msgid "SV: Woo Product Section"
-msgstr ""
+msgstr "SV: Vùng Sản phẩm Woo"
 
 #: inc/storevilla-widget.php:558
 msgid ""
 "A widget that shows WooCommerce all type product (Latest, Feature, On Sale, "
 "Up Sale)."
 msgstr ""
+"Một tiện ích hiển thị tất cả các loại sản phẩm WooCommerce (Mới nhất, Nổi "
+"bật, Giảm giá, Bán gia tăng)."
 
 #: inc/storevilla-widget.php:567 inc/storevilla-widget.php:754
 msgid "UpSell Product"
-msgstr ""
+msgstr "Sản phẩm Bán gia tăng"
 
 #: inc/storevilla-widget.php:569 inc/storevilla-widget.php:756
 msgid "On Sale Product"
-msgstr ""
+msgstr "Sản phẩm Đang bán"
 
 #: inc/storevilla-widget.php:743
 msgid "SV: Woo Product Column"
-msgstr ""
+msgstr "SV: Cột sản phẩm Woo"
 
 #: inc/storevilla-widget.php:744
 msgid ""
 "A widget that shows WooCommerce all type product (Latest, Feature, On Sale, "
 "Up Sale) in column view."
 msgstr ""
+"Một tiện ích hiển thị tất cả các loại sản phẩm WooCommerce (Mới nhất, Nổi "
+"bật, Giảm giá, Bán gia tăng) trong chế độ xem cột."
 
 #: inc/storevilla-widget.php:790
 msgid "Product Column One"
-msgstr ""
+msgstr "Cột Sản phẩm Một"
 
 #: inc/storevilla-widget.php:796
 msgid "Checked to Display One Column"
-msgstr ""
+msgstr "Đã chọn để Hiển thị Một Cột"
 
 #: inc/storevilla-widget.php:802
 msgid "Column One Main Title"
-msgstr ""
+msgstr "Tiêu đề chính Cột Một"
 
 #: inc/storevilla-widget.php:834
 msgid "Product Column Two"
-msgstr ""
+msgstr "Cột Sản phẩm Hai"
 
 #: inc/storevilla-widget.php:841
 msgid "Checked to Display Two Column"
-msgstr ""
+msgstr "Đã chọn để Hiển thị Hai Cột"
 
 #: inc/storevilla-widget.php:847
 msgid "Column Two Main Title"
-msgstr ""
+msgstr "Tiêu đề chính Cột Ba"
 
 #: inc/storevilla-widget.php:880
 msgid "Product Column Three"
-msgstr ""
+msgstr "Cột Sản phẩm Ba"
 
 #: inc/storevilla-widget.php:887
 msgid "Checked to Display Three Column"
-msgstr ""
+msgstr "Đã chọn để Hiển thị Ba Cột"
 
 #: inc/storevilla-widget.php:893
 msgid "Column Three Main Title"
-msgstr ""
+msgstr "Tiêu đề chính Cột Bốn"
 
 #: inc/storevilla-widget.php:1073
 msgid "SV: Quick Contact Info"
-msgstr ""
+msgstr "SV: Thông tin Liên hệ Nhanh"
 
 #: inc/storevilla-widget.php:1074
 msgid "A widget that shows quick contact information"
-msgstr ""
+msgstr "Một tiện ích hiển thị thông tin liên hệ nhanh"
 
 #: inc/storevilla-widget.php:1084
 msgid "Title"
-msgstr ""
+msgstr "Tiêu đề"
 
 #: inc/storevilla-widget.php:1089
 msgid "Contact Address"
-msgstr ""
+msgstr "Địa chỉ Liên hệ"
 
 #: inc/storevilla-widget.php:1095
 msgid "Contact Number"
-msgstr ""
+msgstr "Số Liên hệ"
 
 #: inc/storevilla-widget.php:1100
 msgid "Contact Email Address"
-msgstr ""
+msgstr "Địa chỉ Email Liên hệ"
 
 #: inc/storevilla-widget.php:1185
 msgid "A widget that shows About Us information"
-msgstr ""
+msgstr "Một tiện ích hiển thị thông tin Giới thiệu về chúng tôi"
 
 #: inc/storevilla-widget.php:1195
 msgid "Upload Image"
-msgstr ""
+msgstr "Tải lên Hình ảnh"
 
 #: inc/storevilla-widget.php:1201
 msgid "Short Description"
-msgstr ""
+msgstr "Mô tả Ngắn"
 
 #: inc/storevilla-widget.php:1208
 msgid "Facebook Url"
-msgstr ""
+msgstr "Địa chỉ Facebook"
 
 #: inc/storevilla-widget.php:1214
 msgid "Twitter Url"
-msgstr ""
+msgstr "Địa chỉ Twitter"
 
 #: inc/storevilla-widget.php:1220
 msgid "Google Plus Url"
-msgstr ""
+msgstr "Địa chỉ Google Plus"
 
 #: inc/storevilla-widget.php:1226
 msgid "Youtube Url"
-msgstr ""
+msgstr "Địa chỉ Youtube"
 
 #: inc/storevilla-widget.php:1232
 msgid "Linkedin Url"
-msgstr ""
+msgstr "Địa chỉ Linkedin"
 
 #: inc/storevilla-widget.php:1238
 msgid "Pinterest Url"
-msgstr ""
+msgstr "Địa chỉ Pinterest"
 
 #: inc/storevilla-widget.php:1342
 msgid "SV: Blogs Widget Section"
-msgstr ""
+msgstr "SV: Vùng Tiện ích Blogs"
 
 #: inc/storevilla-widget.php:1343
 msgid "A widget that shows blogs posts"
-msgstr ""
+msgstr "Một tiện ích hiển thị các bài đăng trên blogs"
 
 #: inc/storevilla-widget.php:1367
 msgid "Blogs Top Title"
-msgstr ""
+msgstr "Tiêu đề Phía trên Blogs"
 
 #: inc/storevilla-widget.php:1373
 msgid "Blogs Main Title"
-msgstr ""
+msgstr "Tiêu đề Chính Blogs"
 
 #: inc/storevilla-widget.php:1379 inc/storevilla-widget.php:1570
 msgid "Select Blogs Category"
-msgstr ""
+msgstr "Chọn Danh mục Blogs"
 
 #: inc/storevilla-widget.php:1386
 msgid "Display Posts Order"
-msgstr ""
+msgstr "Hiển thị Bài viết Theo thứ tự"
 
 #: inc/storevilla-widget.php:1476
 msgid "READ MORE"
-msgstr ""
+msgstr "ĐỌC THÊM"
 
 #: inc/storevilla-widget.php:1533
 msgid "SV: Testimonial Widget Section"
-msgstr ""
+msgstr "SV: Vùng Tiện ích Chứng thực"
 
 #: inc/storevilla-widget.php:1534
 msgid "A widget that shows client testimonial posts"
-msgstr ""
+msgstr "Một tiện ích hiển thị bài đăng chứng thực của khách hàng"
 
 #: inc/storevilla-widget.php:1558
 msgid "Testimonial Top Title"
-msgstr ""
+msgstr "Tiêu đề Phía trên Chứng thực"
 
 #: inc/storevilla-widget.php:1564
 msgid "Testimonial Main Title"
-msgstr ""
+msgstr "Tiêu đề Chính Chứng thực"
 
 #: inc/storevilla-widget.php:1577
 msgid "Upload Background Image"
-msgstr ""
+msgstr "Tải lên Hình Nền"
 
 #: inc/storevilla-widget.php:1934
 msgid "No file chosen"
-msgstr ""
+msgstr "Không có tập tin nào được chọn"
 
 #: inc/storevilla-widget.php:1938 inc/storevilla-widget.php:2012
 msgid "Upload"
-msgstr ""
+msgstr "Tải lên"
 
 #: inc/storevilla-widget.php:1940 inc/storevilla-widget.php:2013
 msgid "Remove"
-msgstr ""
+msgstr "Xóa"
 
 #: inc/storevilla-widget.php:1943
 msgid "Upgrade your version of WordPress for full media support."
 msgstr ""
+"Nâng cấp phiên bản WordPress của bạn để được hỗ trợ phương tiện đầy đủ."
 
 #: inc/storevilla-widget.php:1958
 msgid "View File"
-msgstr ""
+msgstr "Xem Tập Tin"
 
 #: inc/template-tags.php:28
 #, php-format
 msgctxt "post date"
 msgid "Posted on %s"
-msgstr ""
+msgstr "Được đăng vào %s"
 
 #: inc/template-tags.php:33
 #, php-format
 msgctxt "post author"
 msgid "by %s"
-msgstr ""
+msgstr "bởi %s"
 
 #. translators: used between list items, there is a space after the comma
 #. translators: used between list items, there is a space after the comma
 #: inc/template-tags.php:50 inc/template-tags.php:56
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: inc/template-tags.php:52
 #, php-format
 msgid "Posted in %1$s"
-msgstr ""
+msgstr "Được đăng trong %1$s"
 
 #: inc/template-tags.php:58
 #, php-format
 msgid "Tagged %1$s"
-msgstr ""
+msgstr "Được gắn thẻ %1$s"
 
 #. translators: %s: post title
 #: inc/template-tags.php:65
 #, php-format
 msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
-msgstr ""
+msgstr "Để lại một Bình luận<span class=\"screen-reader-text\"> trên %s</span>"
 
 #. translators: %s: Name of current post
 #: inc/template-tags.php:72
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Sửa %s"
 
 #: inc/template-tags.php:142
 msgid "Skip to navigation"
-msgstr ""
+msgstr "Chuyển tới điều hướng"
 
 #: inc/template-tags.php:143
 msgid "Skip to content"
-msgstr ""
+msgstr "Chuyển đến nội dung"
 
 #: inc/template-tags.php:230 inc/template-tags.php:231
 msgid "My Account"
-msgstr ""
+msgstr "Tài khoản của tôi"
 
 #: inc/template-tags.php:237
 msgid " Logout"
-msgstr ""
+msgstr "Đăng xuất"
 
 #: inc/template-tags.php:243
 msgid "Login / Register"
-msgstr ""
+msgstr "Đăng nhập / Đăng ký"
 
 #: inc/template-tags.php:254
 msgid "Wishlist"
-msgstr ""
+msgstr "Danh sách yêu thích"
 
 #: inc/template-tags.php:456
 #, php-format
 msgid "%1$s By %2$s"
-msgstr ""
+msgstr "%1$s Bởi %2$s"
 
 #: inc/template-tags.php:541
 msgid "View More"
-msgstr ""
+msgstr "Xem Thêm"
 
 #: template-parts/content-none.php:14
 msgid "Nothing Found"
-msgstr ""
+msgstr "Không tìm thấy"
 
 #: template-parts/content-none.php:21
 #, php-format
 msgid ""
 "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
+"Đã sẵn sàng để đăng bài viết đầu tiên của bạn? <a href=\"%1$s\">Hãy bắt đầu "
+"từ đây</a>."
 
 #: template-parts/content-none.php:25
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
+"Xin lỗi, nhưng không có gì phù hợp với cụm từ tìm kiếm của bạn. Vui lòng thử "
+"lại với một số từ khóa khác nhau."
 
 #: template-parts/content-none.php:30
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help."
 msgstr ""
+"Có vẻ như chúng tôi không thể tìm thấy những gì bạn đang tìm kiếm. Có lẽ tìm "
+"kiếm có thể giúp đỡ."
 
 #: template-parts/content-page.php:23 template-parts/content-single.php:43
 msgid "Pages:"
-msgstr ""
+msgstr "Trang:"
 
 #: template-parts/content-search.php:39 template-parts/content.php:39
 msgid "countinue reading"
-msgstr ""
+msgstr "đọc tiếp"
 
 #: template-parts/content-search.php:45 template-parts/content.php:45
 msgid "Post By :"
-msgstr ""
+msgstr "Đăng Bởi :"
 
 #: woocommerce/global/quantity-input.php:26
 msgctxt "Product quantity input tooltip"
 msgid "Qty"
-msgstr ""
+msgstr "Số lượng"
 
 #. Name of the theme
 msgid "StoreVilla"
