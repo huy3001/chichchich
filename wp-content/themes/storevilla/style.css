@@ -1668,7 +1668,7 @@ pagination-css
 .site-content .banner-header-promo .sv-promo-area .promo-wrapper h2 {
     color: #fff;
     font-size: 24px;
-    font-family: Lato;
+    font-family: Open Sans;
     text-transform: capitalize;
     margin-bottom: 5px;
 }
@@ -1831,7 +1831,7 @@ widget_storevilla_cat_widget_area css
     color: #fff;
 }
 .widget_storevilla_cat_widget_area .category-slider li .item-img .sv_category_count h3.sv-header-title {
-    font-family: Lato;
+    font-family: Open Sans;
     font-weight: 400;
     font-size: 26px;
     color: #000;
@@ -1839,7 +1839,7 @@ widget_storevilla_cat_widget_area css
 }
 .widget_storevilla_cat_widget_area .category-slider li .item-img .sv_category_count .sv-count {
     font-size: 12px;
-    font-family: Lato;
+    font-family: Open Sans;
 }
 /*
 ==========================================================
@@ -1889,7 +1889,7 @@ widget_storevilla_cat_widget_area css
 .widget_storevilla_latest_product_cat_widget_area .latest-product-slider li .block-item-title span a,
 .widget_storevilla_product_widget_area .store-product li .block-item-title span a,
 .widget_storevilla_cat_with_product_widget_area .cat-with-product li .block-item-title span a {
-    font-family: Lato;
+    font-family: Open Sans;
     text-transform: uppercase;
     color: #9e9e9e;
     font-size: 10px;      
@@ -2031,7 +2031,7 @@ ul.add-to-links li {
 }
 ul.add-to-links li a {
     font-size: 10px;
-    font-family: Lato;
+    font-family: Open Sans;
     font-weight: 400;
     position: relative;
     color: #666666;
@@ -2087,7 +2087,7 @@ sale and new button css for all
 .woocommerce span.onsale {
     position: absolute;
     z-index: 999;
-    font-family: Lato;
+    font-family: Open Sans;
     font-weight: 600;
     color: #fff;
     font-size: 14px;
@@ -2165,7 +2165,7 @@ product-button-wrap and button css
 .product-button-wrap a,
 .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
     font-weight: 700;
-    font-family: Lato;
+    font-family: Open Sans;
     font-size: 10px;
     text-transform: uppercase;
     border-radius:0;
@@ -2903,7 +2903,7 @@ end of css
     color: #c6c6c6;
 }
 .footer-quick-info h4 {
-    font-family: Lato;
+    font-family: Open Sans;
     font-size: 40px;
     margin-bottom: 30px;
     padding: 15px 0 0;
@@ -4670,7 +4670,7 @@ widget_storevilla_column_product_widget_area homepage
 }
 .widget_storevilla_column_product_widget_area .column-wrap .col-product-area-one .block-item-title {
     float: left;
-    font-family: Lato;
+    font-family: Open Sans;
     margin-left: 5%;
     padding-bottom: 5px;
     width: 60%;
