@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-12 11:30+0000\n"
 "POT-Revision-Date: Wed Aug 17 2016 17:04:12 GMT+0545 (Nepal Standard Time)\n"
-"PO-Revision-Date: 2018-05-22 21:51+0700\n"
+"PO-Revision-Date: 2018-05-26 20:14+0700\n"
 "Language-Team: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
@@ -237,7 +237,7 @@ msgstr "Liên kết Quảng cáo Hai"
 
 #: inc/customizer.php:343
 msgid "Mange products and singel product page settings"
-msgstr "Quản lý cài đặt trang sản phẩm và sản phẩm đơn lẻ"
+msgstr "Cài đặt quản lý các sản phẩm và sản phẩm đơn lẻ"
 
 #: inc/customizer.php:345
 msgid "WooCommerce Products Area"
@@ -318,11 +318,11 @@ msgstr "Mới"
 
 #: inc/extras.php:212 inc/extras.php:220
 msgid "All Categories"
-msgstr "Tất cả Danh mục"
+msgstr "Tất cả Tours"
 
 #: inc/extras.php:237
 msgid "Search entire store here"
-msgstr "Tìm kiếm toàn bộ cửa hàng tại đây"
+msgstr "Tìm toàn bộ tour tại đây"
 
 #: inc/extras.php:329
 msgid "Display Layout Options"
@@ -742,7 +742,7 @@ msgstr "Chọn Danh mục"
 
 #: inc/storevilla-widget.php:490
 msgid "Products"
-msgstr "Các sản phẩm"
+msgstr "Tours"
 
 #: inc/storevilla-widget.php:494
 msgid "Product"
