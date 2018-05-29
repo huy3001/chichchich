@@ -1,0 +1,16 @@
+/* Footer custom styles */
+
+.site-footer {
+
+    /* Desktop */
+    @include bp(min-width, $bp-tablet + 1) {
+        .footer-widgets {
+            .footer-widget-2,
+            .footer-widget-3,
+            .footer-widget-4,
+            .footer-widget-5 {
+                padding-top: 0;
+            }
+        }
+    }
+}

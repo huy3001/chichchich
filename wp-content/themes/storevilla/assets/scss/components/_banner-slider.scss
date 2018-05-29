@@ -1,0 +1,22 @@
+/* Banner slider custom styles */
+
+.site-content {
+
+    /* Mobile */
+    @include bp(max-width, $bp-mobile) {
+        .slider-wrapper {
+            ul.store-gallery {
+                li {
+                    .banner-slider-info {
+                        max-width: 100%;
+                        padding: 0 10px;
+                    }
+                }
+            }
+
+            .lSPager {
+                bottom: 0;
+            }
+        }
+    }
+}
