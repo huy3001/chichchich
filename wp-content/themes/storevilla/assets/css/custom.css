@@ -31,6 +31,28 @@
   }
 }
 
+/* Navigation custom styles */
+
+/* line 3, scss/layout/_navigation.scss */
+
+.main-navigation {
+  /* Tablet + Desktop */
+}
+
+@media only screen and (min-width: 769px) {
+  /* line 9, scss/layout/_navigation.scss */
+
+  .main-navigation ul li a {
+    padding: 15px 20px;
+  }
+
+  /* line 18, scss/layout/_navigation.scss */
+
+  .main-navigation li.menu-item-has-children > a:before {
+    right: 6px;
+  }
+}
+
 /* Header custom styles */
 
 /* line 6, scss/layout/_header.scss */
