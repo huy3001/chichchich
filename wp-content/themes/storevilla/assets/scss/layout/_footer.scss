@@ -1,6 +1,11 @@
 /* Footer custom styles */
 
 .site-footer {
+    .widget_storevilla_aboutus_info_area {
+        .about-logo {
+            max-width: 180px;
+        }
+    }
 
     /* Desktop */
     @include bp(min-width, $bp-tablet + 1) {
