@@ -8,6 +8,20 @@
 
 /* breakpoint with two conditions (min and max) */
 
+/* Typography custom styles */
+
+/* line 5, scss/base/_typography.scss */
+
+.page .entry-content {
+  color: #404040;
+}
+
+/* line 8, scss/base/_typography.scss */
+
+.page .entry-content a {
+  color: #0091d5;
+}
+
 /* Banner slider custom styles */
 
 /* line 3, scss/components/_banner-slider.scss */
@@ -59,6 +73,12 @@
 
 .header-wrap .site-branding .custom-logo-link + .sv-logo-wrap {
   display: none;
+}
+
+/* line 11, scss/layout/_header.scss */
+
+.header-wrap .site-branding img {
+  max-width: 180px;
 }
 
 /* Footer custom styles */
