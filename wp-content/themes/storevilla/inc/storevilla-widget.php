@@ -1373,16 +1373,16 @@ class storevilla_blog_widget_area extends WP_Widget {
             $cat_lists[$category->term_id] = $category->name;
         }
 
-        $fields = array( 
-            
-            'storevilla_blogs_title' => array(
-                'storevilla_widgets_name' => 'storevilla_blogs_title',
-                'storevilla_widgets_title' => __('Blogs Top Title', 'storevilla'),
-                'storevilla_widgets_field_type' => 'title',
-            ),
+        $fields = array(
             
             'storevilla_blogs_top_title' => array(
                 'storevilla_widgets_name' => 'storevilla_blogs_top_title',
+                'storevilla_widgets_title' => __('Blogs Top Title', 'storevilla'),
+                'storevilla_widgets_field_type' => 'title',
+            ),
+
+            'storevilla_blogs_title' => array(
+                'storevilla_widgets_name' => 'storevilla_blogs_title',
                 'storevilla_widgets_title' => __('Blogs Main Title', 'storevilla'),
                 'storevilla_widgets_field_type' => 'title',
             ),

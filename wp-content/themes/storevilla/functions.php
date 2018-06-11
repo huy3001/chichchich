@@ -206,6 +206,8 @@ function storevilla_scripts() {
 
 	wp_enqueue_style( 'storevilla-responsive', get_template_directory_uri() . '/assets/css/responsive.css');
 
+	wp_enqueue_style( 'storevilla-custom', get_template_directory_uri() . '/assets/css/custom.css');
+
 	/*------------------- JavaScript ---------------------------------------*/
 	$storevilla_theme = wp_get_theme();
     $theme_version = $storevilla_theme->get( 'Version' );

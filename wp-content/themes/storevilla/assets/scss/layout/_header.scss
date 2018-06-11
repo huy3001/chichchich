@@ -1,0 +1,15 @@
+/* Header custom styles */
+
+.header-wrap {
+    .site-branding {
+        .custom-logo-link {
+            & + .sv-logo-wrap {
+                display: none;
+            }
+        }
+
+        img {
+            max-width: 180px;
+        }
+    }
+}

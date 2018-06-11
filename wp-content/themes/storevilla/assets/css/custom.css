@@ -1,0 +1,107 @@
+/* Custom styles for theme */
+
+/* Variables custom styles */
+
+/* Mixin functions */
+
+/* breakpoint with one condition(min or max) */
+
+/* breakpoint with two conditions (min and max) */
+
+/* Typography custom styles */
+
+/* line 5, scss/base/_typography.scss */
+
+.page .entry-content {
+  color: #404040;
+}
+
+/* line 8, scss/base/_typography.scss */
+
+.page .entry-content a {
+  color: #0091d5;
+}
+
+/* Banner slider custom styles */
+
+/* line 3, scss/components/_banner-slider.scss */
+
+.site-content {
+  /* Mobile */
+}
+
+@media only screen and (max-width: 768px) {
+  /* line 10, scss/components/_banner-slider.scss */
+
+  .site-content .slider-wrapper ul.store-gallery li .banner-slider-info {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  /* line 17, scss/components/_banner-slider.scss */
+
+  .site-content .slider-wrapper .lSPager {
+    bottom: 0;
+  }
+}
+
+/* Navigation custom styles */
+
+/* line 3, scss/layout/_navigation.scss */
+
+.main-navigation {
+  /* Tablet + Desktop */
+}
+
+@media only screen and (min-width: 769px) {
+  /* line 9, scss/layout/_navigation.scss */
+
+  .main-navigation ul li a {
+    padding: 15px 20px;
+  }
+
+  /* line 18, scss/layout/_navigation.scss */
+
+  .main-navigation li.menu-item-has-children > a:before {
+    right: 6px;
+  }
+}
+
+/* Header custom styles */
+
+/* line 6, scss/layout/_header.scss */
+
+.header-wrap .site-branding .custom-logo-link + .sv-logo-wrap {
+  display: none;
+}
+
+/* line 11, scss/layout/_header.scss */
+
+.header-wrap .site-branding img {
+  max-width: 180px;
+}
+
+/* Footer custom styles */
+
+/* line 3, scss/layout/_footer.scss */
+
+.site-footer {
+  /* Desktop */
+}
+
+/* line 5, scss/layout/_footer.scss */
+
+.site-footer .widget_storevilla_aboutus_info_area .about-logo {
+  max-width: 180px;
+}
+
+@media only screen and (min-width: 1025px) {
+  /* line 13, scss/layout/_footer.scss */
+
+  .site-footer .footer-widgets .footer-widget-2,
+  .site-footer .footer-widgets .footer-widget-3,
+  .site-footer .footer-widgets .footer-widget-4,
+  .site-footer .footer-widgets .footer-widget-5 {
+    padding-top: 0;
+  }
+}

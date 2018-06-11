@@ -305,11 +305,11 @@ if ( ! function_exists( 'storevilla_button_header' ) ) {
 						<div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
 						<?php
 							$description = get_bloginfo( 'description', 'display' );
-							if ( $description || is_customize_preview() ) : 
+							if ( $description || is_customize_preview() ) :
 						?>
 						<p class="site-description"><?php echo $description; ?></p>
 						<?php endif; ?>
-					</div>				
+					</div>
 				</div><!-- .site-branding -->
 				<div class="search-cart-wrap clearfix">
 				<?php
@@ -448,13 +448,14 @@ if ( ! function_exists( 'storevilla_credit' ) ) {
 				<div class="site-info">
 					<?php $copyright = get_theme_mod( 'storevilla_footer_copyright' ); 
 					if( !empty( $copyright ) ) { ?>
-						<?php echo  wp_kses_post($copyright) ; ?>	
+						<?php echo '&copy; ' . date_i18n( 'Y' ) . ' - ' . wp_kses_post($copyright) ; ?>
 					<?php } else { ?>
 						<?php echo apply_filters( 'storevilla_copyright_text', $content = '&copy; ' . date_i18n( 'Y' ) . ' - ' . get_bloginfo( 'name' ) ); ?>
 					<?php }
 
-					$designer_link = 'https://accesspressthemes.com/wordpress-themes/storevilla/';
-					printf( __( '| WordPress Theme: %s', 'storevilla' ), '<a href=" ' . esc_url( $designer_link ) . ' " target="_blank">StoreVilla</a>' ); ?>
+					/*$designer_link = 'https://accesspressthemes.com';
+					printf( __( '| Designed By: %s', 'accesspressthemes' ), '<a href=" ' . esc_url( $designer_link ) . ' " target="_blank">AccessPress Themes</a>' );*/
+                    ?>
 				</div><!-- .site-info -->
 		<?php
 	}
