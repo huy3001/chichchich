@@ -529,15 +529,16 @@ if ( ! function_exists( 'storevilla_main_slider' ) ) {
 										    $new1 = array_shift($slider_title);
 										    $new2 = array_shift($slider_title);
 										    $content = implode($slider_title, ' ');
-										    echo '<span>'.$new1. ' '.  $new2.'</span>'. $content;
+										    echo '<span>'.$new1. ' '.  $new2.'</span>'. ' '. $content;
 										?>
 									</h2>
 									<div class="caption-content">
 										<?php echo wp_trim_words( get_the_content(), 10); ?>
 									</div>
-									<a class="slider-button" href="<?php the_permalink(); ?>">
+									<?php $postID = get_the_ID(); ?>
+									<a class="slider-button" href="<?php echo get_post_meta( $postID, 'custom_link', true ); ?>" target="_blank">
 										<?php _e('View More','storevilla'); ?>
-									</a>								
+									</a>
 								</div>
 							</li>
 							<?php  } } wp_reset_postdata();  } ?> 

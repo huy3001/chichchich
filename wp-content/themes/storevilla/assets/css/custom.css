@@ -30,15 +30,22 @@
   /* Mobile */
 }
 
+/* line 8, scss/components/_banner-slider.scss */
+
+.site-content .slider-wrapper ul.store-gallery li .banner-slider-info .caption-content {
+  color: #f85570;
+  font-weight: 700;
+}
+
 @media only screen and (max-width: 768px) {
-  /* line 10, scss/components/_banner-slider.scss */
+  /* line 22, scss/components/_banner-slider.scss */
 
   .site-content .slider-wrapper ul.store-gallery li .banner-slider-info {
     max-width: 100%;
     padding: 0 10px;
   }
 
-  /* line 17, scss/components/_banner-slider.scss */
+  /* line 29, scss/components/_banner-slider.scss */
 
   .site-content .slider-wrapper .lSPager {
     bottom: 0;
