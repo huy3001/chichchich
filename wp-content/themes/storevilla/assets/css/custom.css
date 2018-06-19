@@ -112,3 +112,17 @@
     padding-top: 0;
   }
 }
+
+/* Product page custom styles */
+
+/* line 6, scss/pages/_product.scss */
+
+.woocommerce-tabs.wc-tabs-wrapper .entry-content {
+  color: #404040;
+}
+
+/* line 9, scss/pages/_product.scss */
+
+.woocommerce-tabs.wc-tabs-wrapper .entry-content a {
+  color: #0091d5;
+}

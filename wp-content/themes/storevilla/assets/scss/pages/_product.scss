@@ -1,0 +1,14 @@
+/* Product page custom styles */
+
+// Description //
+.woocommerce-tabs {
+    &.wc-tabs-wrapper {
+        .entry-content {
+            color: $c-eclipse;
+
+            a {
+                color: $c-pacific-blue;
+            }
+        }
+    }
+}
