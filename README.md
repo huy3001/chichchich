@@ -1,2 +1,2 @@
-# vanxuan
-Van Xuan Tourist Website
+# Chich Chich Project
+Chich Chich Shop Website
