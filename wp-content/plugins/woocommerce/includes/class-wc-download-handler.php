@@ -31,7 +31,7 @@ class WC_Download_Handler {
 	 * Check if we need to download a file and check validity.
 	 */
 	public static function download_product() {
-		$product_id = absint( $_GET['download_file'] ); // phpcs:ignore WordPress.VIP.SuperGlobalInputUsage.AccessDetected, WordPress.VIP.ValidatedSanitizedInput.InputNotValidated
+		$product_id = absint( $_GET['download_file'] ); // phpcs:ignore WordPress.VIP.SuperGlobalInputUsage.AccessDetected, WordPress.VIP.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 		$product    = wc_get_product( $product_id );
 		$data_store = WC_Data_Store::load( 'customer-download' );
 
@@ -44,12 +44,13 @@ class WC_Download_Handler {
 			self::download_error( __( 'Invalid download link.', 'woocommerce' ) );
 		}
 
+		$order_id = wc_get_order_id_by_order_key( wc_clean( wp_unslash( $_GET['order'] ) ) ); // WPCS: input var ok, CSRF ok.
+		$order    = wc_get_order( $order_id );
+
 		if ( isset( $_GET['email'] ) ) { // WPCS: input var ok, CSRF ok.
 			$email_address = wp_unslash( $_GET['email'] ); // WPCS: input var ok, CSRF ok, sanitization ok.
 		} else {
 			// Get email address from order to verify hash.
-			$order_id      = wc_get_order_id_by_order_key( wc_clean( wp_unslash( $_GET['order'] ) ) ); // WPCS: input var ok, CSRF ok.
-			$order         = wc_get_order( $order_id );
 			$email_address = is_a( $order, 'WC_Order' ) ? $order->get_billing_email() : null;
 
 			// Prepare email address hash.
@@ -79,9 +80,27 @@ class WC_Download_Handler {
 
 		$download = new WC_Customer_Download( current( $download_ids ) );
 
-		$file_path        = $product->get_file_download_path( $download->get_download_id() );
+		/**
+		 * Filter download filepath.
+		 *
+		 * @since 4.0.0
+		 * @param string $file_path File path.
+		 * @param string $email_address Email address.
+		 * @param WC_Order|bool $order Order object or false.
+		 * @param WC_Product $product Product object.
+		 * @param WC_Customer_Download $download Download data.
+		 */
+		$file_path = apply_filters(
+			'woocommerce_download_product_filepath',
+			$product->get_file_download_path( $download->get_download_id() ),
+			$email_address,
+			$order,
+			$product,
+			$download
+		);
+
 		$parsed_file_path = self::parse_file_path( $file_path );
-		$download_range   = self::get_download_range( @filesize( $parsed_file_path['file_path'] ) );  // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged.
+		$download_range   = self::get_download_range( @filesize( $parsed_file_path['file_path'] ) );  // @codingStandardsIgnoreLine.
 
 		self::check_order_is_valid( $download );
 		if ( ! $download_range['is_range_request'] ) {
@@ -103,8 +122,8 @@ class WC_Download_Handler {
 		$download->save();
 
 		// Track the download in logs and change remaining/counts.
-		$current_user_id  = get_current_user_id();
-		$ip_address       = WC_Geolocation::get_ip_address();
+		$current_user_id = get_current_user_id();
+		$ip_address      = WC_Geolocation::get_ip_address();
 		if ( ! $download_range['is_range_request'] ) {
 			$download->track_download( $current_user_id > 0 ? $current_user_id : null, ! empty( $ip_address ) ? $ip_address : null );
 		}
@@ -144,7 +163,7 @@ class WC_Download_Handler {
 	 * @param WC_Customer_Download $download Download instance.
 	 */
 	private static function check_download_expiry( $download ) {
-		if ( ! is_null( $download->get_access_expires() ) && $download->get_access_expires()->getTimestamp() < strtotime( 'midnight', current_time( 'timestamp', true ) ) ) {
+		if ( ! is_null( $download->get_access_expires() ) && $download->get_access_expires()->getTimestamp() < strtotime( 'midnight', time() ) ) {
 			self::download_error( __( 'Sorry, this download has expired', 'woocommerce' ), '', 403 );
 		}
 	}
@@ -243,6 +262,14 @@ class WC_Download_Handler {
 		$parsed_file_path = wp_parse_url( $file_path );
 		$remote_file      = true;
 
+		// Paths that begin with '//' are always remote URLs.
+		if ( '//' === substr( $file_path, 0, 2 ) ) {
+			return array(
+				'remote_file' => true,
+				'file_path'   => is_ssl() ? 'https:' . $file_path : 'http:' . $file_path,
+			);
+		}
+
 		// See if path needs an abspath prepended to work.
 		if ( file_exists( ABSPATH . $file_path ) ) {
 			$remote_file = false;
@@ -273,17 +300,30 @@ class WC_Download_Handler {
 	public static function download_file_xsendfile( $file_path, $filename ) {
 		$parsed_file_path = self::parse_file_path( $file_path );
 
+		/**
+		 * Fallback on force download method for remote files. This is because:
+		 * 1. xsendfile needs proxy configuration to work for remote files, which cannot be assumed to be available on most hosts.
+		 * 2. Force download method is more secure than redirect method if `allow_url_fopen` is enabled in `php.ini`. We fallback to redirect method in force download method anyway in case `allow_url_fopen` is not enabled.
+		 */
+		if ( $parsed_file_path['remote_file'] && ! apply_filters( 'woocommerce_use_xsendfile_for_remote', false ) ) {
+			do_action( 'woocommerce_download_file_force', $file_path, $filename );
+			return;
+		}
+
 		if ( function_exists( 'apache_get_modules' ) && in_array( 'mod_xsendfile', apache_get_modules(), true ) ) {
 			self::download_headers( $parsed_file_path['file_path'], $filename );
-			header( 'X-Sendfile: ' . $parsed_file_path['file_path'] );
+			$filepath = apply_filters( 'woocommerce_download_file_xsendfile_file_path', $parsed_file_path['file_path'], $file_path, $filename, $parsed_file_path );
+			header( 'X-Sendfile: ' . $filepath );
 			exit;
 		} elseif ( stristr( getenv( 'SERVER_SOFTWARE' ), 'lighttpd' ) ) {
 			self::download_headers( $parsed_file_path['file_path'], $filename );
-			header( 'X-Lighttpd-Sendfile: ' . $parsed_file_path['file_path'] );
+			$filepath = apply_filters( 'woocommerce_download_file_xsendfile_lighttpd_file_path', $parsed_file_path['file_path'], $file_path, $filename, $parsed_file_path );
+			header( 'X-Lighttpd-Sendfile: ' . $filepath );
 			exit;
 		} elseif ( stristr( getenv( 'SERVER_SOFTWARE' ), 'nginx' ) || stristr( getenv( 'SERVER_SOFTWARE' ), 'cherokee' ) ) {
 			self::download_headers( $parsed_file_path['file_path'], $filename );
 			$xsendfile_path = trim( preg_replace( '`^' . str_replace( '\\', '/', getcwd() ) . '`', '', $parsed_file_path['file_path'] ), '/' );
+			$xsendfile_path = apply_filters( 'woocommerce_download_file_xsendfile_x_accel_redirect_file_path', $xsendfile_path, $file_path, $filename, $parsed_file_path );
 			header( "X-Accel-Redirect: /$xsendfile_path" );
 			exit;
 		}
@@ -308,7 +348,7 @@ class WC_Download_Handler {
 	 * }
 	 */
 	protected static function get_download_range( $file_size ) {
-		$start  = 0;
+		$start          = 0;
 		$download_range = array(
 			'start'            => $start,
 			'is_range_valid'   => false,
@@ -319,11 +359,11 @@ class WC_Download_Handler {
 			return $download_range;
 		}
 
-		$end    = $file_size - 1;
+		$end                      = $file_size - 1;
 		$download_range['length'] = $file_size;
 
-		if ( isset( $_SERVER['HTTP_RANGE'] ) ) {
-			$http_range = sanitize_text_field( wp_unslash( $_SERVER['HTTP_RANGE'] ) );
+		if ( isset( $_SERVER['HTTP_RANGE'] ) ) { // @codingStandardsIgnoreLine.
+			$http_range                         = sanitize_text_field( wp_unslash( $_SERVER['HTTP_RANGE'] ) ); // WPCS: input var ok.
 			$download_range['is_range_request'] = true;
 
 			$c_start = $start;
@@ -362,8 +402,8 @@ class WC_Download_Handler {
 			$end    = $c_end;
 			$length = $end - $start + 1;
 
-			$download_range['start']       = $start;
-			$download_range['length']      = $length;
+			$download_range['start']          = $start;
+			$download_range['length']         = $length;
 			$download_range['is_range_valid'] = true;
 		}
 		return $download_range;
@@ -377,7 +417,7 @@ class WC_Download_Handler {
 	 */
 	public static function download_file_force( $file_path, $filename ) {
 		$parsed_file_path = self::parse_file_path( $file_path );
-		$download_range = self::get_download_range( @filesize( $parsed_file_path['file_path'] ) );
+		$download_range   = self::get_download_range( @filesize( $parsed_file_path['file_path'] ) ); // @codingStandardsIgnoreLine.
 
 		self::download_headers( $parsed_file_path['file_path'], $filename, $download_range );
 
@@ -463,9 +503,6 @@ class WC_Download_Handler {
 	 */
 	private static function check_server_config() {
 		wc_set_time_limit( 0 );
-		if ( function_exists( 'get_magic_quotes_runtime' ) && get_magic_quotes_runtime() && version_compare( phpversion(), '5.4', '<' ) ) {
-			set_magic_quotes_runtime( 0 ); // @codingStandardsIgnoreLine
-		}
 		if ( function_exists( 'apache_setenv' ) ) {
 			@apache_setenv( 'no-gzip', 1 ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged, WordPress.PHP.DiscouragedPHPFunctions.runtime_configuration_apache_setenv
 		}
@@ -505,31 +542,43 @@ class WC_Download_Handler {
 		}
 		$handle = @fopen( $file, 'r' ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged, WordPress.WP.AlternativeFunctions.file_system_read_fopen
 
-		if ( ! $length ) {
-			$length = @filesize( $file ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-		}
-		$end = $start + $length - 1;
-
 		if ( false === $handle ) {
 			return false;
 		}
 
-		@fseek( $handle, $start ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-		$read_length = WC_CHUNK_SIZE;
-		$p = @ftell( $handle ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		if ( ! $length ) {
+			$length = @filesize( $file ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		}
 
-		while ( ! @feof( $handle ) && $p <= $end ) { // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-			// Don't run past the end of file.
-			if ( $p + $read_length > $end ) {
-				$read_length = $end - $p + 1;
-			}
+		$read_length = (int) WC_CHUNK_SIZE;
 
-			echo @fread( $handle, (int) $read_length ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged, WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.WP.AlternativeFunctions.file_system_read_fread
+		if ( $length ) {
+			$end = $start + $length - 1;
+
+			@fseek( $handle, $start ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 			$p = @ftell( $handle ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 
-			if ( ob_get_length() ) {
-				ob_flush();
-				flush();
+			while ( ! @feof( $handle ) && $p <= $end ) { // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+				// Don't run past the end of file.
+				if ( $p + $read_length > $end ) {
+					$read_length = $end - $p + 1;
+				}
+
+				echo @fread( $handle, $read_length ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged, WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.WP.AlternativeFunctions.file_system_read_fread
+				$p = @ftell( $handle ); // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+
+				if ( ob_get_length() ) {
+					ob_flush();
+					flush();
+				}
+			}
+		} else {
+			while ( ! @feof( $handle ) ) { // @codingStandardsIgnoreLine.
+				echo @fread( $handle, $read_length ); // @codingStandardsIgnoreLine.
+				if ( ob_get_length() ) {
+					ob_flush();
+					flush();
+				}
 			}
 		}
 

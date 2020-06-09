@@ -45,6 +45,7 @@ jQuery(function( $ ) {
 		$( 'input[name="_stock"]', '.inline-edit-row' ).val( stock );
 		$( 'input[name="menu_order"]', '.inline-edit-row' ).val( menu_order );
 
+		// eslint-disable-next-line max-len
 		$( 'select[name="_tax_status"] option, select[name="_tax_class"] option, select[name="_visibility"] option, select[name="_stock_status"] option, select[name="_backorders"] option' ).removeAttr( 'selected' );
 
 		$( 'select[name="_tax_status"] option[value="' + tax_status + '"]', '.inline-edit-row' ).attr( 'selected', 'selected' );
@@ -70,11 +71,11 @@ jQuery(function( $ ) {
 
 		if ( product_supports_stock_fields ) {
 			if ( 'yes' === manage_stock ) {
-				$( '.stock_fields' ).show().removeAttr( 'style' );
+				$( '.stock_qty_field, .backorder_field', '.inline-edit-row' ).show().removeAttr( 'style' );
 				$( '.stock_status_field' ).hide();
 				$( '.manage_stock_field input' ).prop( 'checked', true );
 			} else {
-				$( '.stock_qty_field', '.inline-edit-row' ).hide();
+				$( '.stock_qty_field, .backorder_field', '.inline-edit-row' ).hide();
 				$( '.stock_status_field' ).show().removeAttr( 'style' );
 				$( '.manage_stock_field input' ).prop( 'checked', false );
 			}
@@ -103,10 +104,10 @@ jQuery(function( $ ) {
 	$( '#the-list' ).on( 'change', '.inline-edit-row input[name="_manage_stock"]', function() {
 
 		if ( $( this ).is( ':checked' ) ) {
-			$( '.stock_qty_field', '.inline-edit-row' ).show().removeAttr( 'style' );
+			$( '.stock_qty_field, .backorder_field', '.inline-edit-row' ).show().removeAttr( 'style' );
 			$( '.stock_status_field' ).hide();
 		} else {
-			$( '.stock_qty_field', '.inline-edit-row' ).hide();
+			$( '.stock_qty_field, .backorder_field', '.inline-edit-row' ).hide();
 			$( '.stock_status_field' ).show().removeAttr( 'style' );
 		}
 
@@ -129,6 +130,6 @@ jQuery(function( $ ) {
 	});
 
 	$( '#wpbody' ).on( 'click', '.trash-product', function() {
-		return window.confirm( woocommerce_admin.i18_delete_product_notice );
+		return window.confirm( woocommerce_admin.i18n_delete_product_notice );
 	});
 });
