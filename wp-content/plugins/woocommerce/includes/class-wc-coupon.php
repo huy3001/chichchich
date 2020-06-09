@@ -83,19 +83,26 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	public function __construct( $data = '' ) {
 		parent::__construct( $data );
 
+		// If we already have a coupon object, read it again.
 		if ( $data instanceof WC_Coupon ) {
 			$this->set_id( absint( $data->get_id() ) );
+			$this->read_object_from_database();
+			return;
 		}
 
-		$coupon = apply_filters( 'woocommerce_get_shop_coupon_data', false, $data );
+		// This filter allows custom coupon objects to be created on the fly.
+		$coupon = apply_filters( 'woocommerce_get_shop_coupon_data', false, $data, $this );
+
 		if ( $coupon ) {
 			$this->read_manual_coupon( $data, $coupon );
 			return;
-		} elseif ( is_int( $data ) && 'shop_coupon' === get_post_type( $data ) ) {
+		}
+
+		// Try to load coupon using ID or code.
+		if ( is_int( $data ) && 'shop_coupon' === get_post_type( $data ) ) {
 			$this->set_id( $data );
 		} elseif ( ! empty( $data ) ) {
 			$id = wc_get_coupon_id_by_code( $data );
-
 			// Need to support numeric strings for backwards compatibility.
 			if ( ! $id && 'shop_coupon' === get_post_type( $data ) ) {
 				$this->set_id( $data );
@@ -107,12 +114,21 @@ class WC_Coupon extends WC_Legacy_Coupon {
 			$this->set_object_read( true );
 		}
 
+		$this->read_object_from_database();
+	}
+
+	/**
+	 * If the object has an ID, read using the data store.
+	 *
+	 * @since 3.4.1
+	 */
+	protected function read_object_from_database() {
 		$this->data_store = WC_Data_Store::load( 'coupon' );
+
 		if ( $this->get_id() > 0 ) {
 			$this->data_store->read( $this );
 		}
 	}
-
 	/**
 	 * Checks the coupon type.
 	 *
@@ -183,7 +199,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	 * @return float
 	 */
 	public function get_amount( $context = 'view' ) {
-		return (float) $this->get_prop( 'amount', $context );
+		return wc_format_decimal( $this->get_prop( 'amount', $context ) );
 	}
 
 	/**
@@ -758,11 +774,12 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	/**
 	 * Increase usage count for current coupon.
 	 *
-	 * @param string $used_by Either user ID or billing email.
+	 * @param string   $used_by  Either user ID or billing email.
+	 * @param WC_Order $order  If provided, will clear the coupons held by this order.
 	 */
-	public function increase_usage_count( $used_by = '' ) {
+	public function increase_usage_count( $used_by = '', $order = null ) {
 		if ( $this->get_id() && $this->data_store ) {
-			$new_count = $this->data_store->increase_usage_count( $this, $used_by );
+			$new_count = $this->data_store->increase_usage_count( $this, $used_by, $order );
 
 			// Bypass set_prop and remove pending changes since the data store saves the count already.
 			$this->data['usage_count'] = $new_count;
@@ -797,8 +814,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 
 	/**
 	 * Returns the error_message string.
-	 *
-	 * @access public
+
 	 * @return string
 	 */
 	public function get_error_message() {
@@ -926,7 +942,7 @@ class WC_Coupon extends WC_Legacy_Coupon {
 	 * Map one of the WC_Coupon error codes to a message string.
 	 *
 	 * @param int $err_code Message/error code.
-	 * @return string| Message/error string
+	 * @return string Message/error string
 	 */
 	public function get_coupon_error( $err_code ) {
 		switch ( $err_code ) {
@@ -935,22 +951,22 @@ class WC_Coupon extends WC_Legacy_Coupon {
 				break;
 			case self::E_WC_COUPON_NOT_EXIST:
 				/* translators: %s: coupon code */
-				$err = sprintf( __( 'Coupon "%s" does not exist!', 'woocommerce' ), $this->get_code() );
+				$err = sprintf( __( 'Coupon "%s" does not exist!', 'woocommerce' ), esc_html( $this->get_code() ) );
 				break;
 			case self::E_WC_COUPON_INVALID_REMOVED:
 				/* translators: %s: coupon code */
-				$err = sprintf( __( 'Sorry, it seems the coupon "%s" is invalid - it has now been removed from your order.', 'woocommerce' ), $this->get_code() );
+				$err = sprintf( __( 'Sorry, it seems the coupon "%s" is invalid - it has now been removed from your order.', 'woocommerce' ), esc_html( $this->get_code() ) );
 				break;
 			case self::E_WC_COUPON_NOT_YOURS_REMOVED:
 				/* translators: %s: coupon code */
-				$err = sprintf( __( 'Sorry, it seems the coupon "%s" is not yours - it has now been removed from your order.', 'woocommerce' ), $this->get_code() );
+				$err = sprintf( __( 'Sorry, it seems the coupon "%s" is not yours - it has now been removed from your order.', 'woocommerce' ), esc_html( $this->get_code() ) );
 				break;
 			case self::E_WC_COUPON_ALREADY_APPLIED:
 				$err = __( 'Coupon code already applied!', 'woocommerce' );
 				break;
 			case self::E_WC_COUPON_ALREADY_APPLIED_INDIV_USE_ONLY:
 				/* translators: %s: coupon code */
-				$err = sprintf( __( 'Sorry, coupon "%s" has already been applied and cannot be used in conjunction with other coupons.', 'woocommerce' ), $this->get_code() );
+				$err = sprintf( __( 'Sorry, coupon "%s" has already been applied and cannot be used in conjunction with other coupons.', 'woocommerce' ), esc_html( $this->get_code() ) );
 				break;
 			case self::E_WC_COUPON_USAGE_LIMIT_REACHED:
 				$err = __( 'Coupon usage limit has been reached.', 'woocommerce' );
