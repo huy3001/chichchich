@@ -8,27 +8,64 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     concatCss = require('gulp-concat-css'),
     sourcemap = require('gulp-sourcemaps'),
-    browserSync = require('browser-sync');
+    imagemin = require('gulp-imagemin'),
+    browserSync = require('browser-sync'),
+
+    sassSource = 'scss/custom.scss',
+    cssDest = 'css',
+    imageFiles = 'images/**/*.+(png|jpg|gif)',
+    imageDest = 'images',
+    svgFiles = 'svg/**/*.svg',
+    svgDest = 'svg';
 
 // Create task for browser sync
 gulp.task('browserSync', function() {
     browserSync({
-        proxy: 'http://localhost/vanxuan/'
+        proxy: 'http://localhost/chichchich/'
     })
 });
 
 // Create task for compile sass to css
 gulp.task('sass', function() {
-    return gulp.src('scss/custom.scss')
+    return gulp.src(sassSource)
         .pipe(sourcemap.init())
-        .pipe(sass({sourceComments: 'map'}).on('error', sass.logError))
+        .pipe(sass({
+            sourceComments: 'map',
+            outputStyle: 'compressed'
+        }).on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(concatCss('custom.css'))
         .pipe(sourcemap.write())
-        .pipe(gulp.dest('css/'))
+        .pipe(gulp.dest(cssDest))
         .pipe(browserSync.stream({
             match: '**/*.css'
         }))
+});
+
+// Create task for optimize images
+gulp.task('images', function() {
+    return gulp.src(imageFiles)
+        .pipe(imagemin({
+            interlaced: true,
+            progressive: true,
+            optimizationLevel: 5,
+            verbose: true
+        }))
+        .pipe(gulp.dest(imageDest))
+});
+
+// Create task for optimize svg
+gulp.task('svg', function() {
+    return gulp.src(svgFiles)
+        .pipe(imagemin({
+            svgoPlugins: [
+                {
+                    removeViewBox: true
+                }
+            ],
+            verbose: true
+        }))
+        .pipe(gulp.dest(svgDest))
 });
 
 // Create task for watch changes
@@ -38,6 +75,9 @@ gulp.task('watch', ['browserSync', 'sass'], function() {
     gulp.watch('js/**/*.js', browserSync.reload);
     gulp.watch('**/*.php', browserSync.reload);
 });
+
+// Create task for optimize images
+gulp.task('optimize', ['images', 'svg']);
 
 // Default task for gulp
 gulp.task('default', ['sass', 'watch']);

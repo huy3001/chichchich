@@ -1,7 +1,7 @@
 {
-  "name": "vanxuan",
+  "name": "chichchich",
   "version": "1.0.0",
-  "description": "This is vanxuan theme for wordpress",
+  "description": "This is Chich Chich theme for wordpress",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,7 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-concat-css": "^3.1.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4"
   },
