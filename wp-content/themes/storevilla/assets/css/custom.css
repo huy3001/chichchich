@@ -1,15 +1,3 @@
-/* Custom styles for theme */
-
-/* Variables custom styles */
-
-/* Mixin functions */
-
-/* breakpoint with one condition(min or max) */
-
-/* breakpoint with two conditions (min and max) */
-
-/* Typography custom styles */
-
 /* line 5, scss/base/_typography.scss */
 
 .page .entry-content {
@@ -20,14 +8,6 @@
 
 .page .entry-content a {
   color: #0091d5;
-}
-
-/* Banner slider custom styles */
-
-/* line 3, scss/components/_banner-slider.scss */
-
-.site-content {
-  /* Mobile */
 }
 
 /* line 8, scss/components/_banner-slider.scss */
@@ -52,14 +32,6 @@
   }
 }
 
-/* Navigation custom styles */
-
-/* line 3, scss/layout/_navigation.scss */
-
-.main-navigation {
-  /* Tablet + Desktop */
-}
-
 @media only screen and (min-width: 769px) {
   /* line 9, scss/layout/_navigation.scss */
 
@@ -69,16 +41,14 @@
 
   /* line 18, scss/layout/_navigation.scss */
 
-  .main-navigation li.menu-item-has-children > a:before {
+  .main-navigation li.menu-item-has-children>a:before {
     right: 6px;
   }
 }
 
-/* Header custom styles */
-
 /* line 6, scss/layout/_header.scss */
 
-.header-wrap .site-branding .custom-logo-link + .sv-logo-wrap {
+.header-wrap .site-branding .custom-logo-link+.sv-logo-wrap {
   display: none;
 }
 
@@ -86,14 +56,6 @@
 
 .header-wrap .site-branding img {
   max-width: 180px;
-}
-
-/* Footer custom styles */
-
-/* line 3, scss/layout/_footer.scss */
-
-.site-footer {
-  /* Desktop */
 }
 
 /* line 5, scss/layout/_footer.scss */
@@ -112,8 +74,6 @@
     padding-top: 0;
   }
 }
-
-/* Product page custom styles */
 
 /* line 6, scss/pages/_product.scss */
 
