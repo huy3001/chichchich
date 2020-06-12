@@ -1,0 +1,20 @@
+/* Cart page custom styles */
+
+// Quantity //
+.cart_item {
+    .quantity {
+        .input-text {
+            border: 1px solid $c-pacific-blue;
+        }
+    }
+}
+
+// Cart total //
+.cart-collaterals {
+    .cart_totals {
+        h2 {
+            margin: 0 0 1em;
+            text-transform: uppercase;
+        }
+    }
+}

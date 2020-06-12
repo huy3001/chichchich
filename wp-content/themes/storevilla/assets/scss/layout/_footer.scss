@@ -7,6 +7,12 @@
         }
     }
 
+    .footer-widgets {
+        .menu-item {
+            text-transform: uppercase;
+        }
+    }
+
     /* Desktop */
     @include bp(min-width, $bp-tablet + 1) {
         .footer-widgets {

@@ -1,3 +1,165 @@
+/* line 5, scss/base/_reset.scss */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 94, scss/base/_reset.scss */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* line 108, scss/base/_reset.scss */
+
+body {
+  line-height: 1;
+}
+
+/* line 112, scss/base/_reset.scss */
+
+ol,
+ul {
+  list-style: none;
+}
+
+/* line 117, scss/base/_reset.scss */
+
+blockquote,
+q {
+  quotes: none;
+}
+
+/* line 122, scss/base/_reset.scss */
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+/* line 130, scss/base/_reset.scss */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 137, scss/base/_reset.scss */
+
+button:focus,
+input:focus {
+  outline: none;
+}
+
+/* line 142, scss/base/_reset.scss */
+
+a {
+  transition: color .3s ease-out;
+}
+
+/* line 145, scss/base/_reset.scss */
+
+a:hover {
+  color: #0091d5;
+}
+
 /* line 5, scss/base/_typography.scss */
 
 .page .entry-content {
@@ -64,8 +226,14 @@
   max-width: 180px;
 }
 
+/* line 11, scss/layout/_footer.scss */
+
+.site-footer .footer-widgets .menu-item {
+  text-transform: uppercase;
+}
+
 @media only screen and (min-width: 1025px) {
-  /* line 13, scss/layout/_footer.scss */
+  /* line 19, scss/layout/_footer.scss */
 
   .site-footer .footer-widgets .footer-widget-2,
   .site-footer .footer-widgets .footer-widget-3,
@@ -73,6 +241,12 @@
   .site-footer .footer-widgets .footer-widget-5 {
     padding-top: 0;
   }
+}
+
+/* line 6, scss/layout/_sidebar.scss */
+
+.product-categories .cat-item a:hover {
+  color: #0091d5;
 }
 
 /* line 6, scss/pages/_product.scss */
@@ -85,4 +259,17 @@
 
 .woocommerce-tabs.wc-tabs-wrapper .entry-content a {
   color: #0091d5;
+}
+
+/* line 6, scss/pages/_cart.scss */
+
+.cart_item .quantity .input-text {
+  border: 1px solid #0091d5;
+}
+
+/* line 15, scss/pages/_cart.scss */
+
+.cart-collaterals .cart_totals h2 {
+  margin: 0 0 1em;
+  text-transform: uppercase;
 }
