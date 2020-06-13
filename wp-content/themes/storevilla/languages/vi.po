@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-12 11:30+0000\n"
 "POT-Revision-Date: Wed Aug 17 2016 17:04:12 GMT+0545 (Nepal Standard Time)\n"
-"PO-Revision-Date: 2020-06-12 22:02+0700\n"
+"PO-Revision-Date: 2020-06-13 21:58+0700\n"
 "Language-Team: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
@@ -706,7 +706,7 @@ msgstr "Hình ảnh Danh mục Căn lề Bên trái"
 
 #: inc/storevilla-widget.php:226
 msgid "Product Category Main Title"
-msgstr "Tieu đề Chính Danh mục Sản phẩm"
+msgstr "Tiêu đề Chính Danh mục Sản phẩm"
 
 #: inc/storevilla-widget.php:232
 msgid "Select Display Style (Image Alignment)"
