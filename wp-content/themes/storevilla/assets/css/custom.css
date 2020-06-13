@@ -106,25 +106,19 @@ section {
 
 /* line 108, scss/base/_reset.scss */
 
-body {
-  line-height: 1;
-}
-
-/* line 112, scss/base/_reset.scss */
-
 ol,
 ul {
   list-style: none;
 }
 
-/* line 117, scss/base/_reset.scss */
+/* line 113, scss/base/_reset.scss */
 
 blockquote,
 q {
   quotes: none;
 }
 
-/* line 122, scss/base/_reset.scss */
+/* line 118, scss/base/_reset.scss */
 
 blockquote:before,
 blockquote:after,
@@ -134,30 +128,44 @@ q:after {
   content: none;
 }
 
-/* line 130, scss/base/_reset.scss */
+/* line 126, scss/base/_reset.scss */
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 137, scss/base/_reset.scss */
+/* line 131, scss/base/_reset.scss */
 
-button:focus,
-input:focus {
+:focus {
   outline: none;
 }
 
-/* line 142, scss/base/_reset.scss */
+/* line 138, scss/base/_reset.scss */
+
+button:focus,
+input:focus,
+select:focus {
+  outline: none;
+}
+
+/* line 143, scss/base/_reset.scss */
 
 a {
   transition: color .3s ease-out;
 }
 
-/* line 145, scss/base/_reset.scss */
+/* line 146, scss/base/_reset.scss */
 
 a:hover {
   color: #0091d5;
+}
+
+/* line 151, scss/base/_reset.scss */
+
+img {
+  display: block;
+  margin: auto;
 }
 
 /* line 5, scss/base/_typography.scss */
@@ -217,13 +225,44 @@ a:hover {
 /* line 11, scss/layout/_header.scss */
 
 .header-wrap .site-branding img {
-  max-width: 180px;
+  max-width: 100px;
+}
+
+/* line 20, scss/layout/_header.scss */
+
+.site-header-cart .mini_cart_item .mini-cart-product {
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* line 27, scss/layout/_header.scss */
+
+.site-header-cart .mini_cart_item .quantity {
+  left: 80px;
+  position: absolute;
+  top: 20px;
+}
+
+/* line 37, scss/layout/_header.scss */
+
+.site-header-cart .woocommerce a.button.wc-forward {
+  padding: 13px 15px;
+  text-align: center;
+}
+
+/* line 41, scss/layout/_header.scss */
+
+.site-header-cart .woocommerce a.button.wc-forward:before {
+  margin-right: 10px;
+  position: static;
 }
 
 /* line 5, scss/layout/_footer.scss */
 
 .site-footer .widget_storevilla_aboutus_info_area .about-logo {
-  max-width: 180px;
+  max-width: 100px;
 }
 
 /* line 11, scss/layout/_footer.scss */
@@ -232,8 +271,14 @@ a:hover {
   text-transform: uppercase;
 }
 
+/* line 17, scss/layout/_footer.scss */
+
+.site-footer .widget_media_gallery .gallery-item {
+  padding: 1px;
+}
+
 @media only screen and (min-width: 1025px) {
-  /* line 19, scss/layout/_footer.scss */
+  /* line 25, scss/layout/_footer.scss */
 
   .site-footer .footer-widgets .footer-widget-2,
   .site-footer .footer-widgets .footer-widget-3,
@@ -249,16 +294,30 @@ a:hover {
   color: #0091d5;
 }
 
-/* line 6, scss/pages/_product.scss */
+/* line 7, scss/pages/_product.scss */
+
+.product .quantity .input-text.text {
+  border: none;
+}
+
+/* line 17, scss/pages/_product.scss */
 
 .woocommerce-tabs.wc-tabs-wrapper .entry-content {
   color: #404040;
 }
 
-/* line 9, scss/pages/_product.scss */
+/* line 20, scss/pages/_product.scss */
 
 .woocommerce-tabs.wc-tabs-wrapper .entry-content a {
   color: #0091d5;
+}
+
+/* line 32, scss/pages/_product.scss */
+
+.woocommerce ul.products li.product .product-button-wrap a {
+  padding-right: 30px;
+  text-align: center;
+  width: 100%;
 }
 
 /* line 6, scss/pages/_cart.scss */
@@ -267,9 +326,116 @@ a:hover {
   border: 1px solid #0091d5;
 }
 
-/* line 15, scss/pages/_cart.scss */
+/* line 17, scss/pages/_cart.scss */
+
+.woocommerce-page table.cart td.actions .coupon .input-text {
+  height: 36px;
+}
+
+/* line 28, scss/pages/_cart.scss */
 
 .cart-collaterals .cart_totals h2 {
   margin: 0 0 1em;
   text-transform: uppercase;
+}
+
+/* line 6, scss/pages/_checkout.scss */
+
+.woocommerce-additional-fields .form-row textarea {
+  min-height: 185px;
+}
+
+/* line 13, scss/pages/_checkout.scss */
+
+.woocommerce-checkout h3 {
+  font-weight: bold;
+  margin: 1em 0;
+  text-transform: uppercase;
+}
+
+/* line 20, scss/pages/_checkout.scss */
+
+.woocommerce-checkout .select2-container .select2-selection--single {
+  border-color: #ccc;
+  border-radius: 0;
+  font-size: 13px;
+  height: 35px;
+}
+
+/* line 26, scss/pages/_checkout.scss */
+
+.woocommerce-checkout .select2-container .select2-selection--single .select2-selection__rendered {
+  line-height: 35px;
+}
+
+/* line 30, scss/pages/_checkout.scss */
+
+.woocommerce-checkout .select2-container .select2-selection--single .select2-selection__arrow {
+  height: 33px;
+}
+
+/* line 39, scss/pages/_checkout.scss */
+
+.select2-container .select2-search--dropdown .select2-search__field {
+  font-size: 13px;
+}
+
+/* line 44, scss/pages/_checkout.scss */
+
+.select2-container .select2-results__option {
+  font-size: 13px;
+}
+
+/* line 52, scss/pages/_checkout.scss */
+
+.woocommerce-page tr.cart_item td.product-name {
+  padding: 9px 12px !important;
+}
+
+/* line 60, scss/pages/_checkout.scss */
+
+.site-content .woocommerce-error {
+  margin: 0 0 2em;
+  padding: 1em 2em 1em 3.5em;
+}
+
+/* line 65, scss/pages/_checkout.scss */
+
+.site-content .woocommerce-order-overview {
+  padding: 0;
+}
+
+/* line 70, scss/pages/_checkout.scss */
+
+.woocommerce-thankyou-order-received {
+  margin-bottom: 1em;
+}
+
+/* line 74, scss/pages/_checkout.scss */
+
+.woocommerce-order-details__title,
+.woocommerce-column__title {
+  margin: 1em 0;
+}
+
+/* line 81, scss/pages/_checkout.scss */
+
+.woocommerce .woocommerce-customer-details address {
+  border-radius: 0;
+}
+
+/* line 5, scss/pages/_about.scss */
+
+.site-content .wp-block-social-links {
+  padding: 0;
+}
+
+/* line 8, scss/pages/_about.scss */
+
+.wp-block-social-links .wp-social-link a,
+.wp-block-social-links .wp-social-link a:active,
+.wp-block-social-links .wp-social-link a:hover,
+.wp-block-social-links .wp-social-link a:visited {
+  color: #fff;
+  fill: none;
 }

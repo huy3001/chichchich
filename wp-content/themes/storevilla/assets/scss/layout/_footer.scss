@@ -3,13 +3,19 @@
 .site-footer {
     .widget_storevilla_aboutus_info_area {
         .about-logo {
-            max-width: 180px;
+            max-width: $logo-size;
         }
     }
 
     .footer-widgets {
         .menu-item {
             text-transform: uppercase;
+        }
+    }
+
+    .widget_media_gallery {
+        .gallery-item {
+            padding: 1px;
         }
     }
 

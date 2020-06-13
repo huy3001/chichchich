@@ -9,6 +9,19 @@
     }
 }
 
+// Coupon //
+.woocommerce-page {
+    table.cart {
+        td.actions {
+            .coupon {
+                .input-text {
+                    height: 36px;
+                }
+            }
+        }
+    }
+}
+
 // Cart total //
 .cart-collaterals {
     .cart_totals {

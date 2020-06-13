@@ -105,10 +105,6 @@ section {
     display: block;
 }
 
-body {
-    line-height: 1;
-}
-
 ol,
 ul {
     list-style: none;
@@ -132,8 +128,13 @@ table {
     border-spacing: 0;
 }
 
+:focus {
+    outline: none;
+}
+
 button,
-input {
+input,
+select {
     &:focus {
         outline: none;
     }
@@ -145,4 +146,9 @@ a {
     &:hover {
         color: $c-pacific-blue;
     }
+}
+
+img {
+    display: block;
+    margin: auto;
 }
