@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-12 11:30+0000\n"
 "POT-Revision-Date: Wed Aug 17 2016 17:04:12 GMT+0545 (Nepal Standard Time)\n"
-"PO-Revision-Date: 2018-05-26 20:14+0700\n"
+"PO-Revision-Date: 2020-06-13 21:58+0700\n"
 "Language-Team: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
 "esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
 "esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.3.1\n"
 "Last-Translator: \n"
 "Language: vi_VN\n"
 "X-Poedit-SearchPath-0: ..\n"
@@ -91,7 +91,7 @@ msgstr "Thêm tiện ích tiền tệ ngôn ngữ tại đây."
 
 #: functions.php:148
 msgid "SV : Main Block Widget Area"
-msgstr "SV: Khu vực Tiện ích Chính"
+msgstr "Khối: Khu vực Tiện ích Chính"
 
 #: functions.php:162
 #, php-format
@@ -318,11 +318,11 @@ msgstr "Mới"
 
 #: inc/extras.php:212 inc/extras.php:220
 msgid "All Categories"
-msgstr "Tất cả Tours"
+msgstr "Sản phẩm"
 
 #: inc/extras.php:237
 msgid "Search entire store here"
-msgstr "Tìm toàn bộ tour tại đây"
+msgstr "Tìm sản phẩm"
 
 #: inc/extras.php:329
 msgid "Display Layout Options"
@@ -637,7 +637,7 @@ msgstr "Vui lòng liên hệ với quản trị viên của trang web này để
 
 #: inc/storevilla-widget.php:19
 msgid "SV: Woo Latest Category Product"
-msgstr "SV: Danh mục sản phẩm mới nhất Woo"
+msgstr "Khối: Danh mục sản phẩm mới nhất (Woo)"
 
 #: inc/storevilla-widget.php:20
 msgid "A widget that shows WooCommerce category latest product."
@@ -686,7 +686,7 @@ msgstr "Nhập Số lượng Sản phẩm Hiện"
 
 #: inc/storevilla-widget.php:185
 msgid "SV: Woo Category With Product"
-msgstr "SV: Danh mục Với Sản phẩm Woo"
+msgstr "Khối: Danh mục Với Sản phẩm (Woo)"
 
 #: inc/storevilla-widget.php:186
 msgid ""
@@ -706,7 +706,7 @@ msgstr "Hình ảnh Danh mục Căn lề Bên trái"
 
 #: inc/storevilla-widget.php:226
 msgid "Product Category Main Title"
-msgstr "Tieu đề Chính Danh mục Sản phẩm"
+msgstr "Tiêu đề Chính Danh mục Sản phẩm"
 
 #: inc/storevilla-widget.php:232
 msgid "Select Display Style (Image Alignment)"
@@ -718,7 +718,7 @@ msgstr "Xem Tất cả"
 
 #: inc/storevilla-widget.php:376
 msgid "SV: Woo Category Section"
-msgstr "SV: Vùng Danh mục Woo"
+msgstr "Khối: Vùng Danh mục (Woo)"
 
 #: inc/storevilla-widget.php:377
 msgid "A widget that shows WooCommerce category"
@@ -742,7 +742,7 @@ msgstr "Chọn Danh mục"
 
 #: inc/storevilla-widget.php:490
 msgid "Products"
-msgstr "Tours"
+msgstr "Tất cả sản phẩm"
 
 #: inc/storevilla-widget.php:494
 msgid "Product"
@@ -750,7 +750,7 @@ msgstr "Sản phẩm"
 
 #: inc/storevilla-widget.php:557
 msgid "SV: Woo Product Section"
-msgstr "SV: Vùng Sản phẩm Woo"
+msgstr "Khối: Vùng Sản phẩm (Woo)"
 
 #: inc/storevilla-widget.php:558
 msgid ""
@@ -770,7 +770,7 @@ msgstr "Sản phẩm Đang bán"
 
 #: inc/storevilla-widget.php:743
 msgid "SV: Woo Product Column"
-msgstr "SV: Cột sản phẩm Woo"
+msgstr "Khối: Cột sản phẩm (Woo)"
 
 #: inc/storevilla-widget.php:744
 msgid ""
@@ -818,7 +818,7 @@ msgstr "Tiêu đề chính Cột Bốn"
 
 #: inc/storevilla-widget.php:1073
 msgid "SV: Quick Contact Info"
-msgstr "SV: Thông tin Liên hệ Nhanh"
+msgstr "Khối: Thông tin Liên hệ Nhanh"
 
 #: inc/storevilla-widget.php:1074
 msgid "A widget that shows quick contact information"
@@ -878,7 +878,7 @@ msgstr "Địa chỉ Pinterest"
 
 #: inc/storevilla-widget.php:1342
 msgid "SV: Blogs Widget Section"
-msgstr "SV: Vùng Tiện ích Blogs"
+msgstr "Khối: Vùng Tiện ích Blogs"
 
 #: inc/storevilla-widget.php:1343
 msgid "A widget that shows blogs posts"
@@ -906,7 +906,7 @@ msgstr "ĐỌC THÊM"
 
 #: inc/storevilla-widget.php:1533
 msgid "SV: Testimonial Widget Section"
-msgstr "SV: Vùng Tiện ích Chứng thực"
+msgstr "Khối: Vùng Tiện ích Chứng thực"
 
 #: inc/storevilla-widget.php:1534
 msgid "A widget that shows client testimonial posts"
@@ -999,7 +999,7 @@ msgstr "Tài khoản của tôi"
 
 #: inc/template-tags.php:237
 msgid " Logout"
-msgstr "Đăng xuất"
+msgstr " Đăng xuất"
 
 #: inc/template-tags.php:243
 msgid "Login / Register"
