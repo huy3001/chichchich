@@ -868,6 +868,6 @@ if ( storevilla_is_woocommerce_activated() ) {
             return $fragments;
         }
     }
-    add_filter( 'add_to_cart_fragments', 'storevilla_cart_link_fragment' );
+    add_filter( 'woocommerce_add_to_cart_fragments', 'storevilla_cart_link_fragment' );
 
 }
