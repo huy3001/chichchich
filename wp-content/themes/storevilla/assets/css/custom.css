@@ -228,7 +228,24 @@ img {
   max-width: 100px;
 }
 
-/* line 20, scss/layout/_header.scss */
+@media only screen and (min-width: 769px) {
+  /* line 18, scss/layout/_header.scss */
+
+  .header-wrap .store-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* line 24, scss/layout/_header.scss */
+
+  .header-wrap .site-branding,
+  .header-wrap .search-cart-wrap {
+    float: none;
+  }
+}
+
+/* line 34, scss/layout/_header.scss */
 
 .site-header-cart .mini_cart_item .mini-cart-product {
   max-width: 90%;
@@ -237,7 +254,7 @@ img {
   white-space: nowrap;
 }
 
-/* line 27, scss/layout/_header.scss */
+/* line 41, scss/layout/_header.scss */
 
 .site-header-cart .mini_cart_item .quantity {
   left: 80px;
@@ -245,14 +262,14 @@ img {
   top: 20px;
 }
 
-/* line 37, scss/layout/_header.scss */
+/* line 51, scss/layout/_header.scss */
 
 .site-header-cart .woocommerce a.button.wc-forward {
   padding: 13px 15px;
   text-align: center;
 }
 
-/* line 41, scss/layout/_header.scss */
+/* line 55, scss/layout/_header.scss */
 
 .site-header-cart .woocommerce a.button.wc-forward:before {
   margin-right: 10px;

@@ -12,6 +12,20 @@
             max-width: $logo-size;
         }
     }
+
+    /* Tablet */
+    @include bp(min-width, $bp-mobile + 1) {
+        .store-container {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .site-branding,
+        .search-cart-wrap {
+            float: none;
+        }
+    }
 }
 
 // Minicart //
