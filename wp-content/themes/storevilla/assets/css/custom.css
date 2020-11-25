@@ -7,12 +7,6 @@ span,
 applet,
 object,
 iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 p,
 blockquote,
 pre,
@@ -88,7 +82,7 @@ video {
   vertical-align: baseline;
 }
 
-/* line 94, scss/base/_reset.scss */
+/* line 88, scss/base/_reset.scss */
 
 article,
 aside,
@@ -104,21 +98,21 @@ section {
   display: block;
 }
 
-/* line 108, scss/base/_reset.scss */
+/* line 102, scss/base/_reset.scss */
 
 ol,
 ul {
   list-style: none;
 }
 
-/* line 113, scss/base/_reset.scss */
+/* line 107, scss/base/_reset.scss */
 
 blockquote,
 q {
   quotes: none;
 }
 
-/* line 118, scss/base/_reset.scss */
+/* line 112, scss/base/_reset.scss */
 
 blockquote:before,
 blockquote:after,
@@ -128,20 +122,20 @@ q:after {
   content: none;
 }
 
-/* line 126, scss/base/_reset.scss */
+/* line 120, scss/base/_reset.scss */
 
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 131, scss/base/_reset.scss */
+/* line 125, scss/base/_reset.scss */
 
 :focus {
   outline: none;
 }
 
-/* line 138, scss/base/_reset.scss */
+/* line 132, scss/base/_reset.scss */
 
 button:focus,
 input:focus,
@@ -149,35 +143,51 @@ select:focus {
   outline: none;
 }
 
-/* line 143, scss/base/_reset.scss */
+/* line 137, scss/base/_reset.scss */
 
 a {
   transition: color .3s ease-out;
 }
 
-/* line 146, scss/base/_reset.scss */
+/* line 140, scss/base/_reset.scss */
 
 a:hover {
   color: #0091d5;
 }
 
-/* line 151, scss/base/_reset.scss */
+/* line 145, scss/base/_reset.scss */
 
 img {
   display: block;
   margin: auto;
 }
 
-/* line 5, scss/base/_typography.scss */
+/* line 4, scss/base/_typography.scss */
 
-.page .entry-content {
-  color: #404040;
+body {
+  color: #000;
 }
 
-/* line 8, scss/base/_typography.scss */
+/* line 11, scss/base/_typography.scss */
 
-.page .entry-content a {
+.page .entry-content,
+.storevilla-blog .entry-content {
+  color: #000;
+}
+
+/* line 14, scss/base/_typography.scss */
+
+.page .entry-content a,
+.storevilla-blog .entry-content a {
   color: #0091d5;
+}
+
+/* line 18, scss/base/_typography.scss */
+
+.page .entry-content img,
+.storevilla-blog .entry-content img {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* line 8, scss/components/_banner-slider.scss */
