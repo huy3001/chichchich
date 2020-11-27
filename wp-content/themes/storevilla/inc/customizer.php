@@ -1,6 +1,6 @@
 <?php
 /**
- * Store Villa Theme Customizer.
+ * StoreVilla Theme Customizer.
  *
  * @package Store_Villa
  */
@@ -46,14 +46,19 @@ function storevilla_customize_register( $wp_customize ) {
           array(
               'title1'    => esc_html__( 'Free vs Pro', 'storevilla' ),
               'pro_text1' => esc_html__( 'Compare','storevilla' ),
-              'pro_url1'  => admin_url('themes.php?page=storevilla-welcome&section=free_vs_pro'),
+              'pro_url1'  => admin_url('themes.php?page=welcome-page#free_vs_pro'),
               'priority' => 1,
           )
       )
   );
- 
 
-
+  $wp_customize->add_setting( 'storevilla_tpl_color', array( 'default' => '#0091D5', 'sanitize_callback' => 'sanitize_hex_color' ) );
+  $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'storevilla_tpl_color', array(
+      'label'      => esc_html__( 'Template Color', 'storevilla' ),
+      'section'    => 'colors',
+      'settings'   => 'storevilla_tpl_color',
+    ) ) 
+  );
 
     $wp_customize->add_section( 'storevilla_header_options', array(
 		'title'           =>      __('Header Options', 'storevilla'),

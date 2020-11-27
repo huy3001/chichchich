@@ -25,11 +25,13 @@ function storevilla_posted_on() {
 	);
 
 	$posted_on = sprintf(
+		/* translators: %s : posted date */
 		esc_html_x( 'Posted on %s', 'post date', 'storevilla' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
 	$byline = sprintf(
+		/* translators: %s : author */
 		esc_html_x( 'by %s', 'post author', 'storevilla' ),
 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 	);
@@ -49,13 +51,15 @@ function storevilla_entry_footer() {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ', ', 'storevilla' ) );
 		if ( $categories_list && storevilla_categorized_blog() ) {
+			/* translators: %1$s : category lists */
 			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'storevilla' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'storevilla' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'storevilla' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			/* translators: %1$s : taglists */
+			printf( '<span class="tags-links">' . wp_kses(__( 'Tagged %1$s', 'storevilla' ), array( 'a' => array( 'href' => array(), 'rel' => array() ) ) ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
@@ -123,7 +127,7 @@ add_action( 'save_post',     'storevilla_category_transient_flusher' );
 
 
 /**
- * Store Villa Custom Function Section.
+ * StoreVilla Custom Function Section.
  */
  
  
@@ -139,8 +143,8 @@ if ( ! function_exists( 'storevilla_skip_links' ) ) {
 	 */
 	function storevilla_skip_links() {
 		?>
-			<a class="skip-link screen-reader-text" href="#site-navigation"><?php _e( 'Skip to navigation', 'storevilla' ); ?></a>
-			<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'storevilla' ); ?></a>
+			<a class="skip-link screen-reader-text" href="#site-navigation"><?php esc_html_e( 'Skip to navigation', 'storevilla' ); ?></a>
+			<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'storevilla' ); ?></a>
 		<?php
 	}
 }
@@ -184,32 +188,32 @@ if ( ! function_exists( 'storevilla_top_header' ) ) {
 								<?php if(!empty( $email_address )) { ?>
 									
 				                    <li>
-				                    	<span class="fa <?php if(!empty( $emial_icon )) { echo $emial_icon; } ?>">&nbsp;</span>
-				                    	<a href="mailto:<?php echo $email_address; ?>"><?php echo $email_address; ?></a>
+				                    	<span class="fa <?php if(!empty( $emial_icon )) { echo esc_attr($emial_icon); } ?>">&nbsp;</span>
+				                    	<a href="mailto:<?php echo esc_html($email_address); ?>"><?php echo esc_html($email_address); ?></a>
 				                    </li>
 			                    <?php }  ?>
 			                    
 			                    <?php if(!empty( $phone_number )) { ?>
 									
 				                    <li>
-				                    	<span class="fa <?php if(!empty( $phone_icon )) { echo $phone_icon; } ?>">&nbsp;</span>
-				                    	<a href="tel:<?php echo $phone_num; ?>"><?php echo $phone_number; ?></a>
+				                    	<span class="fa <?php if(!empty( $phone_icon )) { echo esc_attr($phone_icon); } ?>">&nbsp;</span>
+				                    	<a href="tel:<?php echo esc_html($phone_num); ?>"><?php echo esc_html($phone_number); ?></a>
 				                    </li>
 			                    <?php }  ?>
 			                    
 			                    <?php if(!empty( $map_address )) { ?>
 									
 				                    <li>
-				                    	<span class="fa <?php if(!empty( $map_address_iocn )) { echo $map_address_iocn; } ?>">&nbsp;</span>
-				                    	<?php echo $map_address; ?>
+				                    	<span class="fa <?php if(!empty( $map_address_iocn )) { echo esc_attr($map_address_iocn); } ?>">&nbsp;</span>
+				                    	<?php echo esc_html($map_address); ?>
 				                    </li>
 			                    <?php }  ?>
 			                    
 			                    <?php if(!empty( $shop_open_time )) { ?>
 									
 				                    <li>
-				                    	<span class="fa <?php if(!empty( $shop_open_icon )) { echo $shop_open_icon; } ?>">&nbsp;</span>
-				                    	<?php echo $shop_open_time; ?>
+				                    	<span class="fa <?php if(!empty( $shop_open_icon )) { echo esc_attr($shop_open_icon); } ?>">&nbsp;</span>
+				                    	<?php echo esc_html($shop_open_time); ?>
 				                    </li>
 			                    <?php }  ?>
 			                    
@@ -227,20 +231,20 @@ if ( ! function_exists( 'storevilla_top_header' ) ) {
 
     							<?php if (is_user_logged_in()) { if ( storevilla_is_woocommerce_activated() ) { ?>	
     						        <li class="my_account_wrapper">
-    									<a href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>" title="<?php _e('My Account','storevilla');?>">
-    										<?php _e('My Account','storevilla'); ?>
+    									<a href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>" title="<?php esc_attr_e('My Account','storevilla');?>">
+    										<?php esc_html_e('My Account','storevilla'); ?>
     									</a>
     								</li>
     							<?php } ?>
     								<li>
-    				                    <a class="sv_logout" href="<?php echo wp_logout_url( home_url() ); ?>">
-    				                        <?php _e(' Logout', 'storevilla'); ?>
+    				                    <a class="sv_logout" href="<?php echo esc_url(wp_logout_url( home_url() )); ?>">
+    				                        <?php esc_html_e(' Logout', 'storevilla'); ?>
     				                    </a>
     			                    </li>    			
     			                <?php } else { if ( storevilla_is_woocommerce_activated() ) { ?>    			
     			                	<li>
-    				                    <a class="sv_login" href="<?php echo get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">
-    				                        <?php _e('Login / Register', 'storevilla'); ?>
+    				                    <a class="sv_login" href="<?php echo esc_url(get_permalink(get_option('woocommerce_myaccount_page_id'))); ?>">
+    				                        <?php esc_html_e('Login / Register', 'storevilla'); ?>
     				                    </a>
     			                    </li>
     			                <?php } }  ?>
@@ -250,13 +254,13 @@ if ( ! function_exists( 'storevilla_top_header' ) ) {
 					                $wishlist_url = YITH_WCWL()->get_wishlist_url();
 				            	?>
 				                    <li>
-					                    <a class="quick-wishlist" href="<?php echo $wishlist_url; ?>" title="Wishlist">
-					                        <?php _e('Wishlist','storevilla'); ?><?php echo "(" . yith_wcwl_count_products() . ")"; ?>
+					                    <a class="quick-wishlist" href="<?php echo esc_url($wishlist_url); ?>" title="<?php esc_attr_e( 'Wishlist', 'storevilla' ); ?>">
+					                        <?php esc_html_e('Wishlist','storevilla'); ?><?php echo "(" . absint(yith_wcwl_count_products()) . ")"; ?>
 					                    </a>
 				                    </li>
 
 					            <?php } if ( storevilla_is_woocommerce_activated() ) { ?>
-	                			
+								
 	                			<li>	                				
 	                				<?php 
 	                					storevilla_cart_link();
@@ -305,11 +309,11 @@ if ( ! function_exists( 'storevilla_button_header' ) ) {
 						<div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
 						<?php
 							$description = get_bloginfo( 'description', 'display' );
-							if ( $description || is_customize_preview() ) :
+							if ( $description || is_customize_preview() ) : 
 						?>
-						<p class="site-description"><?php echo $description; ?></p>
+						<p class="site-description"><?php echo esc_html($description); ?></p>
 						<?php endif; ?>
-					</div>
+					</div>				
 				</div><!-- .site-branding -->
 				<div class="search-cart-wrap clearfix">
 				<?php
@@ -323,7 +327,7 @@ if ( ! function_exists( 'storevilla_button_header' ) ) {
 					 
 					if ( storevilla_is_woocommerce_activated() ) { ?>
 						<div class="advance-search">
-							<?php storevilla_product_search(); ?>
+							<?php echo storevilla_product_search(); ?>
 						</div>
 					<?php } else{ ?>
 						<div class="normal-search">
@@ -350,7 +354,7 @@ if ( ! function_exists( 'storevilla_primary_navigation' ) ) {
 		?>
 		<nav id="site-navigation" class="main-navigation">
 			<div class="store-container clearfix">
-				<div class="menu-toggle" aria-controls="primary-navigation">
+				<div class="menu-toggle" aria-controls="primary-navigation" tabindex="0">
 					<span></span>
 				</div>
 				<?php
@@ -381,13 +385,13 @@ if ( ! function_exists( 'storevilla_footer_widgets' ) ) {
 	 */
 	function storevilla_footer_widgets() {
 		
-			if ( is_active_sidebar( 'storevillafooter-4' ) ) {
+			if ( is_active_sidebar( 'storevillafooter-5' ) ) {
 				$widget_columns = apply_filters( 'storevilla_footer_widget_regions', 5 );
-			} elseif ( is_active_sidebar( 'storevillafooter-3' ) ) {
+			} elseif ( is_active_sidebar( 'storevillafooter-4' ) ) {
 				$widget_columns = apply_filters( 'storevilla_footer_widget_regions', 4 );
-			} elseif ( is_active_sidebar( 'storevillafooter-2' ) ) {
+			} elseif ( is_active_sidebar( 'storevillafooter-3' ) ) {
 				$widget_columns = apply_filters( 'storevilla_footer_widget_regions', 3 );
-			} elseif ( is_active_sidebar( 'storevillafooter-1' ) ) {
+			} elseif ( is_active_sidebar( 'storevillafooter-2' ) ) {
 				$widget_columns = apply_filters( 'storevilla_footer_widget_regions', 2 );
 			} elseif ( is_active_sidebar( 'storevillafooter-1' ) ) {
 				$widget_columns = apply_filters( 'storevilla_footer_widget_regions', 1 );
@@ -415,13 +419,15 @@ if ( ! function_exists( 'storevilla_footer_widgets' ) ) {
 			
 							<?php endwhile; 
 
-							if ( is_active_sidebar( 'storevillaquickinfo' ) ) { ?>		
+							 ?>
+
+						</div>
+						<?php 
+						if ( is_active_sidebar( 'storevillaquickinfo' ) ) { ?>		
 								<div class="footer-quick-info" role="complementary">				
 									<?php dynamic_sidebar( 'storevillaquickinfo' ); ?>				
 								</div>			
-							<?php } ?>
-
-						</div>
+							<?php }?>
 
 					</div>
 	
@@ -448,14 +454,14 @@ if ( ! function_exists( 'storevilla_credit' ) ) {
 				<div class="site-info">
 					<?php $copyright = get_theme_mod( 'storevilla_footer_copyright' ); 
 					if( !empty( $copyright ) ) { ?>
-						<?php echo '&copy; ' . date_i18n( 'Y' ) . ' - ' . wp_kses_post($copyright) ; ?>
+						<?php echo  wp_kses_post($copyright) ; ?>	
 					<?php } else { ?>
-						<?php echo apply_filters( 'storevilla_copyright_text', $content = '&copy; ' . date_i18n( 'Y' ) . ' - ' . get_bloginfo( 'name' ) ); ?>
+						<?php echo ('&copy; ' . date_i18n( 'Y' ) ); ?>
 					<?php }
 
-					/*$designer_link = 'https://accesspressthemes.com';
-					printf( __( '| Designed By: %s', 'accesspressthemes' ), '<a href=" ' . esc_url( $designer_link ) . ' " target="_blank">AccessPress Themes</a>' );*/
-                    ?>
+					$designer_link = 'https://accesspressthemes.com/wordpress-themes/storevilla/';
+					/* translators: %s : designer link */
+					printf( wp_kses(__( ' WordPress Theme: %s ', 'storevilla' ), array( 'a' => array( 'href' => array(), 'target' => array() ) ) ), '<a href=" ' . esc_url( $designer_link ) . ' " target="_blank">StoreVilla</a>' ); ?>
 				</div><!-- .site-info -->
 		<?php
 	}
@@ -528,17 +534,16 @@ if ( ! function_exists( 'storevilla_main_slider' ) ) {
 										    $slider_title = explode(" ", $slider_title);
 										    $new1 = array_shift($slider_title);
 										    $new2 = array_shift($slider_title);
-										    $content = implode($slider_title, ' ');
-										    echo '<span>'.$new1. ' '.  $new2.'</span>'. ' '. $content;
+										    $content = implode(' ', $slider_title);
+										    echo '<span>'.esc_html($new1). ' '.  esc_html($new2).'</span>'. esc_html($content);
 										?>
 									</h2>
 									<div class="caption-content">
-										<?php echo wp_trim_words( get_the_content(), 10); ?>
+										<?php echo esc_html(wp_trim_words( get_the_content(), 10)); ?>
 									</div>
-									<?php $postID = get_the_ID(); ?>
-									<a class="slider-button" href="<?php echo get_post_meta( $postID, 'custom_link', true ); ?>" target="_blank">
-										<?php _e('View More','storevilla'); ?>
-									</a>
+									<a class="slider-button" href="<?php the_permalink(); ?>">
+										<?php esc_html_e('View More','storevilla'); ?>
+									</a>								
 								</div>
 							</li>
 							<?php  } } wp_reset_postdata();  } ?> 

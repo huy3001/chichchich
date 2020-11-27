@@ -106,7 +106,7 @@ if ( storevilla_is_woocommerce_activated() ) {
             $product_category = intval( empty( $instance['storevilla_woo_category'] )   ? '' : $instance['storevilla_woo_category'] );
             $product_number   = intval( empty( $instance['storevilla_product_number'] ) ? '' : $instance['storevilla_product_number'] );
             $product_args = storevilla_woocommerce_query($product_type, $product_category, $product_number);
-            echo $before_widget; 
+            echo wp_kses_post($before_widget); 
         ?>
         
             <div class="sp-producttype-wrap">
@@ -145,7 +145,7 @@ if ( storevilla_is_woocommerce_activated() ) {
             </div><!-- End Product Slider --> 
     
         <?php         
-            echo $after_widget;
+            echo wp_kses_post($after_widget);
         }
        
         public function update($new_instance, $old_instance) {
@@ -267,19 +267,19 @@ if ( storevilla_is_woocommerce_activated() ) {
                 $category_id = $cat_id->term_id;
                 $category_link = get_term_link( $category_id,'product_cat' ); 
               } else {
-                $category_link = get_permalink( woocommerce_get_page_id( 'shop' ) );
+                $category_link = get_permalink( wc_get_page_id( 'shop' ) );
               }
             }
             else{
-              $category_link = get_permalink( woocommerce_get_page_id( 'shop' ) );
+              $category_link = get_permalink( wc_get_page_id( 'shop' ) );
             }     
-            echo $before_widget; 
+            echo wp_kses_post($before_widget);  
         ?>    
             <div class="categor-products">
 
                 <div class="store-container">
                     
-                    <div id="category-product-slider" class="product-cat-slide clearfix <?php echo $cat_aligment; ?>">
+                    <div id="category-product-slider" class="product-cat-slide clearfix <?php echo esc_attr($cat_aligment); ?>">
                         
                         <div class="home-block-inner">                                                
                             <?php 
@@ -297,7 +297,7 @@ if ( storevilla_is_woocommerce_activated() ) {
 
                             <div class="cat-block-wrap">
                                 <?php 
-                                    $thumbnail_id = get_woocommerce_term_meta($product_category, 'thumbnail_id', true);
+                                    $thumbnail_id = get_term_meta($product_category, 'thumbnail_id', true);
                                     if (!empty($thumbnail_id)) {
                                       $image = wp_get_attachment_image_src($thumbnail_id, 'storevilla-cat-image');
                                       echo '<a href="' .esc_url($category_link). '" class="store-overlay" style="background-image:url('.esc_url($image[0]).');">
@@ -305,8 +305,8 @@ if ( storevilla_is_woocommerce_activated() ) {
                                     } ?>                            
                                     
                                 <div class="block-title-desc">
-                                    <?php echo $terms; ?>
-                                    <a href="<?php echo esc_url($category_link); ?>" class="view-bnt"><?php _e('View All','storevilla'); ?></a>
+                                    <?php echo wp_kses_post($terms); ?>
+                                    <a href="<?php echo esc_url($category_link); ?>" class="view-bnt"><?php esc_html_e('View All','storevilla'); ?></a>
                                 </div>
                             </div>
                             
@@ -342,7 +342,7 @@ if ( storevilla_is_woocommerce_activated() ) {
             </div><!-- End Bestsell Slider --> 
     
         <?php         
-            echo $after_widget;
+            echo wp_kses_post($after_widget);
         }
        
         public function update($new_instance, $old_instance) {
@@ -453,15 +453,13 @@ if ( storevilla_is_woocommerce_activated() ) {
             $main_title         = esc_textarea( empty( $instance['storevilla_main_cat_title'] ) ? '' : $instance['storevilla_main_cat_title'] );
             $store_villa_cat_id = empty( $instance['storevilla_select_category'] ) ? '' : $instance['storevilla_select_category'];
             $cat_bg_image       = esc_url( empty( $instance['storevilla_top_cat_bg_image'] )    ? '' : $instance['storevilla_top_cat_bg_image'] );
-            
-            echo $before_widget; 
+            echo wp_kses_post($before_widget); 
             $cat_bg_class = '';
             $bg_style = '';
             if(!empty( $cat_bg_image )) { 
                 $bg_style = 'style="background-image:url('.esc_url( $cat_bg_image ) .'); background-size: cover;"';
                 $cat_bg_class = 'no-bg-image';
-            }
-        ?>
+            }?>
             <div class="category-area <?php echo esc_attr( $cat_bg_class ); ?>" <?php echo $bg_style; ?>>
                
                 <div class="store-container">
@@ -486,7 +484,7 @@ if ( storevilla_is_woocommerce_activated() ) {
                             if(!empty($store_villa_cat_id)){
                                 
                                 foreach ($store_villa_cat_id as $key => $store_cat_id) {          
-                                    $thumbnail_id = get_woocommerce_term_meta( $key, 'thumbnail_id', true );
+                                    $thumbnail_id = get_term_meta( $key, 'thumbnail_id', true );
                                     $images = wp_get_attachment_url( $thumbnail_id );
                                     $image = wp_get_attachment_image_src($thumbnail_id, 'storevilla-cat-image', true);
                                     $term = get_term_by( 'id', $key, 'product_cat');
@@ -505,12 +503,12 @@ if ( storevilla_is_woocommerce_activated() ) {
                                     <a href="<?php echo esc_url($term_link); ?>">
                                         <?php  
                                             if ( $images ) {
-                                              echo '<img class="absolute category-image" src="' . $image[0] . '" alt="'. esc_attr($term_name) .'" />';
+                                              echo '<img class="absolute category-image" src="' . esc_url($image[0]) . '" alt="'. esc_attr($term_name) .'" />';
                                             } 
                                         ?>
                                         <div class="sv_category_count">
                                             <h3 class="sv-header-title"><?php echo esc_html($term_name); ?></h3>
-                                            <p class="sv-count"><?php echo $sub_count;  ?></p>
+                                            <p class="sv-count"><?php echo esc_html($sub_count);  ?></p>
                                         </div>
                                     </a>            
                                 </div>         
@@ -522,7 +520,7 @@ if ( storevilla_is_woocommerce_activated() ) {
             </div>
     
         <?php         
-            echo $after_widget;
+            echo wp_kses_post($after_widget);
         }
        
         public function update($new_instance, $old_instance) {
@@ -675,7 +673,7 @@ if ( storevilla_is_woocommerce_activated() ) {
                 ));
             }
             
-            echo $before_widget; 
+            echo wp_kses_post($before_widget); 
         ?>
         
             <div class="sp-producttype-wrap">
@@ -716,7 +714,7 @@ if ( storevilla_is_woocommerce_activated() ) {
             </div><!-- End Product Slider --> 
     
         <?php         
-            echo $after_widget;
+            echo wp_kses_post($after_widget);
         }
        
         public function update($new_instance, $old_instance) {
@@ -968,7 +966,7 @@ if ( storevilla_is_woocommerce_activated() ) {
             $col_three_product_number    = intval( empty( $instance['storevilla_column_three_product_number'] ) ? '' : $instance['storevilla_column_three_product_number'] );            
             $product_args_three = storevilla_woocommerce_query($col_three_product_type, $col_three_product_category, $col_three_product_number);
             
-            echo $before_widget; 
+            echo wp_kses_post($before_widget); 
         ?>
         
             <div class="column-wrap clearfix">
@@ -1044,7 +1042,7 @@ if ( storevilla_is_woocommerce_activated() ) {
             </div><!-- End Product Slider --> 
     
         <?php         
-            echo $after_widget;
+            echo wp_kses_post($after_widget);
         }
        
         public function update($new_instance, $old_instance) {
@@ -1128,10 +1126,10 @@ class storevilla_contact_info_area extends WP_Widget {
         $phone_num = preg_replace("/[^0-9]/","",$contact_number);
         $contact_email   = empty( $instance['storevilla_quick_email'] ) ? '' : $instance['storevilla_quick_email'];        
         
-        echo $before_widget; 
+        echo wp_kses_post($before_widget); 
 
         if(!empty($title)) {
-          echo '<h4>'.$title.'</h4>';
+          echo '<h4>'.esc_html($title).'</h4>';
         }
     ?>
       <ul class="contacts-info">
@@ -1150,12 +1148,12 @@ class storevilla_contact_info_area extends WP_Widget {
           </li>
         <?php }  if(!empty( $contact_email )) { ?>
           <li class="email-footer">
-            <span><i class="fa fa-envelope"></i></span> <a href="mailto:<?php echo sanitize_email( $contact_email ); ?>"><?php echo sanitize_email( $contact_email ); ?></a>
+            <span><i class="fa fa-envelope"></i></span> <a href="mailto:<?php echo esc_html( $contact_email ); ?>"><?php echo esc_html( $contact_email ); ?></a>
           </li>
         <?php } ?>
       </ul>
     <?php         
-        echo $after_widget;
+        echo wp_kses_post($after_widget);
     }
    
     public function update($new_instance, $old_instance) {
@@ -1194,7 +1192,7 @@ class storevilla_aboutus_info_area extends WP_Widget {
     **/
     public function __construct() {
         parent::__construct(
-            'storevilla_aboutus_info_area', __('SV: About Us Information','storevilla'), array(
+            'storevilla_aboutus_info_area', 'SV: About Us Information', array(
             'description' => __('A widget that shows About Us information', 'storevilla')
         ));
     }
@@ -1270,13 +1268,13 @@ class storevilla_aboutus_info_area extends WP_Widget {
         $linkedin     = $instance['storevilla_linkedin_url'];
         $pinterest    = $instance['storevilla_pinterest_url'];                
        
-        echo $before_widget; 
+        echo wp_kses_post($before_widget); 
     ?>
     <div class="store-container">
       <div class="about-info clearfix">
         <?php if(!empty( $logo )) { ?>
           <div class="about-logo">
-              <img src="<?php echo esc_url( $logo ); ?>" alt="" />
+              <img src="<?php echo esc_url( $logo ); ?>" alt="<?php the_title_attribute() ?>" />
           </div>
         <?php }  if(!empty( $shor_desc )) { ?>
           <div class="about-desc">
@@ -1315,7 +1313,7 @@ class storevilla_aboutus_info_area extends WP_Widget {
       </div>
     </div>
     <?php         
-        echo $after_widget;
+        echo wp_kses_post($after_widget);
     }
    
     public function update($new_instance, $old_instance) {
@@ -1373,16 +1371,16 @@ class storevilla_blog_widget_area extends WP_Widget {
             $cat_lists[$category->term_id] = $category->name;
         }
 
-        $fields = array(
+        $fields = array( 
             
-            'storevilla_blogs_top_title' => array(
-                'storevilla_widgets_name' => 'storevilla_blogs_top_title',
+            'storevilla_blogs_title' => array(
+                'storevilla_widgets_name' => 'storevilla_blogs_title',
                 'storevilla_widgets_title' => __('Blogs Top Title', 'storevilla'),
                 'storevilla_widgets_field_type' => 'title',
             ),
-
-            'storevilla_blogs_title' => array(
-                'storevilla_widgets_name' => 'storevilla_blogs_title',
+            
+            'storevilla_blogs_top_title' => array(
+                'storevilla_widgets_name' => 'storevilla_blogs_top_title',
                 'storevilla_widgets_title' => __('Blogs Main Title', 'storevilla'),
                 'storevilla_widgets_field_type' => 'title',
             ),
@@ -1434,7 +1432,7 @@ class storevilla_blog_widget_area extends WP_Widget {
 
         $total_count = $blogs_posts->post_count;
 
-        echo $before_widget; 
+        echo wp_kses_post($before_widget); 
     ?>
         <div class="storevilla-blog-wrap">
 
@@ -1472,7 +1470,7 @@ class storevilla_blog_widget_area extends WP_Widget {
                                 
                                     <div class="entry-thumb">
                                         <a href="<?php the_permalink(); ?>">
-                                            <img alt="" title="<?php the_title( ); ?>" src="<?php echo esc_url( $image[0] ); ?>">
+                                            <img alt="<?php the_title_attribute() ?>" title="<?php the_title( ); ?>" src="<?php echo esc_url( $image[0] ); ?>">
                                         </a>
                                      </div>
                                      
@@ -1483,10 +1481,10 @@ class storevilla_blog_widget_area extends WP_Widget {
                                     <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                                     <?php if( $count == 3 ) { ?>
                                         <div class="blog-preview_desc">
-                                            <?php echo wp_trim_words( get_the_content(), 80); ?>
+                                            <?php echo esc_html(wp_trim_words( get_the_content(), 80)); ?>
                                         </div>
                                     <?php } ?>
-                                    <a class="blog-preview-btn" href="<?php the_permalink(); ?>"><?php _e('READ MORE','storevilla'); ?></a>
+                                    <a class="blog-preview-btn" href="<?php the_permalink(); ?>"><?php esc_html_e('READ MORE','storevilla'); ?></a>
                                 </div>
                                 
                             </div>
@@ -1506,7 +1504,7 @@ class storevilla_blog_widget_area extends WP_Widget {
 
         </div><!-- End Latest Blog -->
     <?php         
-        echo $after_widget;
+        echo wp_kses_post($after_widget);
     }
    
     public function update($new_instance, $old_instance) {
@@ -1618,7 +1616,7 @@ class storevilla_testimonial_widget_area extends WP_Widget {
             'cat'                 => $testimonial_cat_id,
         ));
 
-        echo $before_widget; 
+        echo wp_kses_post($before_widget); 
     ?>
 
         <div class="testimonial-outer-container" <?php if(!empty( $testimonial_bg_image )) { ?> style="background-image:url(<?php echo esc_url( $testimonial_bg_image ); ?>); background-size:cover;"<?php } ?>>
@@ -1642,7 +1640,7 @@ class storevilla_testimonial_widget_area extends WP_Widget {
 
                             ?>                            
                                 <div class="entry-thumb">
-                                    <img alt="" title="<?php the_title( ); ?>" src="<?php echo esc_url( $image[0] ); ?>">
+                                    <img alt="<?php the_title_attribute() ?>" title="<?php the_title( ); ?>" src="<?php echo esc_url( $image[0] ); ?>">
                                 </div>                                 
                             <?php } ?>
                            
@@ -1665,7 +1663,7 @@ class storevilla_testimonial_widget_area extends WP_Widget {
         </div><!-- End Latest Blog -->
 
     <?php         
-        echo $after_widget;
+        echo wp_kses_post($after_widget);
     }
    
     public function update($new_instance, $old_instance) {
@@ -1689,7 +1687,7 @@ class storevilla_testimonial_widget_area extends WP_Widget {
 }
 
 /**
- * Store Villa Field Functional file
+ * StoreVilla Field Functional file
  * @package Store_Villa
 */
 function storevilla_widgets_show_widget_field($instance = '', $widget_field = '', $storevilla_field_value = '') {
@@ -1730,12 +1728,12 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'text' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>"><?php echo $storevilla_widgets_title; ?> :</label>
-                <input class="widefat" id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>" type="text" value="<?php echo esc_attr($storevilla_field_value) ; ?>" />
+                <label for="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>"><?php echo esc_html($storevilla_widgets_title); ?> :</label>
+                <input class="widefat" id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>" type="text" value="<?php echo esc_attr($storevilla_field_value) ; ?>" />
 
                 <?php if (isset($storevilla_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $storevilla_widgets_description; ?></small>
+                    <small><?php echo esc_html($storevilla_widgets_description); ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -1745,11 +1743,11 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'title' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>"><?php echo $storevilla_widgets_title; ?> :</label>
-                <input class="widefat" id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>" type="text" value="<?php echo esc_attr($storevilla_field_value) ; ?>" />
+                <label for="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>"><?php echo esc_html($storevilla_widgets_title); ?> :</label>
+                <input class="widefat" id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>" type="text" value="<?php echo esc_attr($storevilla_field_value) ; ?>" />
                 <?php if (isset($storevilla_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $storevilla_widgets_description; ?></small>
+                    <small><?php echo esc_html($storevilla_widgets_description); ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -1757,8 +1755,8 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
 
         case 'group_start' :
             ?>
-            <div class="storevilla-main-group" id="ap-font-awesome-list <?php echo $instance->get_field_id(($storevilla_widgets_name)); ?>">
-                <div class="storevilla-main-group-heading" style="font-size: 15px;  font-weight: bold;  padding-top: 12px;"><?php echo $storevilla_widgets_title ; ?><span class="toogle-arrow"></span></div>
+            <div class="storevilla-main-group" id="ap-font-awesome-list <?php echo esc_attr($instance->get_field_id(($storevilla_widgets_name))); ?>">
+                <div class="storevilla-main-group-heading" style="font-size: 15px;  font-weight: bold;  padding-top: 12px;"><?php echo esc_html($storevilla_widgets_title); ?><span class="toogle-arrow"></span></div>
                 <div class="storevilla-main-group-wrap">
 
             <?php
@@ -1773,12 +1771,12 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'url' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>"><?php echo $storevilla_widgets_title; ?> :</label>
-                <input class="widefat" id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>" type="text" value="<?php echo $storevilla_field_value; ?>" />
+                <label for="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>"><?php echo esc_html($storevilla_widgets_title); ?> :</label>
+                <input class="widefat" id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>" type="text" value="<?php echo esc_url($storevilla_field_value); ?>" />
 
                 <?php if (isset($storevilla_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $storevilla_widgets_description; ?></small>
+                    <small><?php echo esc_html($storevilla_widgets_description); ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -1788,8 +1786,8 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'textarea' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>"><?php echo $storevilla_widgets_title; ?> :</label>
-                <textarea class="widefat" rows="<?php echo $storevilla_widgets_row; ?>" id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>"><?php echo $storevilla_field_value; ?></textarea>
+                <label for="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>"><?php echo esc_html($storevilla_widgets_title); ?> :</label>
+                <textarea class="widefat" rows="<?php echo esc_attr($storevilla_widgets_row); ?>" id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>"><?php echo esc_textarea($storevilla_field_value); ?></textarea>
             </p>
             <?php
             break;
@@ -1798,12 +1796,12 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'checkbox' :
             ?>
             <p>
-                <input id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>" type="checkbox" value="1" <?php checked('1', $storevilla_field_value); ?>/>
-                <label for="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>"><?php echo $storevilla_widgets_title; ?></label>
+                <input id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>" type="checkbox" value="1" <?php checked('1', $storevilla_field_value); ?>/>
+                <label for="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>"><?php echo esc_html($storevilla_widgets_title); ?></label>
 
                 <?php if (isset($storevilla_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $storevilla_widgets_description; ?></small>
+                    <small><?php echo esc_html($storevilla_widgets_description); ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -1814,17 +1812,17 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
             ?>
             <p>
                 <?php
-                echo $storevilla_widgets_title;
+                echo esc_html($storevilla_widgets_title);
                 echo '<br />';
                 foreach ($storevilla_widgets_field_options as $storevilla_option_name => $storevilla_option_title) {
                     ?>
-                    <input id="<?php echo $instance->get_field_id($storevilla_option_name); ?>" name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>" type="radio" value="<?php echo $storevilla_option_name; ?>" <?php checked($storevilla_option_name, $storevilla_field_value); ?> />
-                    <label for="<?php echo $instance->get_field_id($storevilla_option_name); ?>"><?php echo $storevilla_option_title; ?></label>
+                    <input id="<?php echo esc_attr($instance->get_field_id($storevilla_option_name)); ?>" name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>" type="radio" value="<?php echo esc_attr($storevilla_option_name); ?>" <?php checked($storevilla_option_name, $storevilla_field_value); ?> />
+                    <label for="<?php echo esc_attr($instance->get_field_id($storevilla_option_name)); ?>"><?php echo esc_html($storevilla_option_title); ?></label>
                     <br />
                 <?php } ?>
 
                 <?php if (isset($storevilla_widgets_description)) { ?>
-                    <small><?php echo $storevilla_widgets_description; ?></small>
+                    <small><?php echo esc_html($storevilla_widgets_description); ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -1834,16 +1832,16 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'select' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>"><?php echo $storevilla_widgets_title; ?> :</label>
-                <select name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>" id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" class="widefat">
+                <label for="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>"><?php echo esc_html($storevilla_widgets_title); ?> :</label>
+                <select name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>" id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" class="widefat">
                     <?php foreach ($storevilla_widgets_field_options as $storevilla_option_name => $storevilla_option_title) { ?>
-                        <option value="<?php echo $storevilla_option_name; ?>" id="<?php echo $instance->get_field_id($storevilla_option_name); ?>" <?php selected($storevilla_option_name, $storevilla_field_value); ?>><?php echo $storevilla_option_title; ?></option>
+                        <option value="<?php echo esc_attr($storevilla_option_name); ?>" id="<?php echo esc_attr($instance->get_field_id($storevilla_option_name)); ?>" <?php selected($storevilla_option_name, $storevilla_field_value); ?>><?php echo esc_html($storevilla_option_title); ?></option>
                     <?php } ?>
                 </select>
 
                 <?php if (isset($storevilla_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $storevilla_widgets_description; ?></small>
+                    <small><?php echo esc_html($storevilla_widgets_description); ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -1853,16 +1851,16 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'selectpage' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>"><?php echo $storevilla_widgets_title; ?>:</label>
-                <select name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>" id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" class="widefat">
+                <label for="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>"><?php echo esc_html($storevilla_widgets_title); ?>:</label>
+                <select name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>" id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" class="widefat">
                     <?php foreach ($storevilla_pagelist as $storevilla_page) { ?>
-                        <option value="<?php echo $storevilla_page['value']; ?>" id="<?php echo $instance->get_field_id($storevilla_page['label']); ?>" <?php selected($storevilla_page['value'], $storevilla_field_value); ?>><?php echo $storevilla_page['label']; ?></option>
+                        <option value="<?php echo esc_attr($storevilla_page['value']); ?>" id="<?php echo esc_attr($instance->get_field_id($storevilla_page['label'])); ?>" <?php selected($storevilla_page['value'], $storevilla_field_value); ?>><?php echo esc_html($storevilla_page['label']); ?></option>
                     <?php } ?>
                 </select>
 
                 <?php if (isset($storevilla_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $storevilla_widgets_description; ?></small>
+                    <small><?php echo esc_html($storevilla_widgets_description); ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -1871,12 +1869,12 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'number' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>"><?php echo $storevilla_widgets_title; ?> :</label><br />
-                <input name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>" type="number" step="4" min="4" id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" value="<?php echo $storevilla_field_value; ?>" class="widefat" />
+                <label for="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>"><?php echo esc_html($storevilla_widgets_title); ?> :</label><br />
+                <input name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>" type="number" step="1" min="1" id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" value="<?php echo esc_attr($storevilla_field_value); ?>" class="widefat" />
 
                 <?php if (isset($storevilla_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $storevilla_widgets_description; ?></small>
+                    <small><?php echo esc_html($storevilla_widgets_description); ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -1886,16 +1884,16 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'select_category' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>"><?php echo $storevilla_widgets_title; ?> :</label>
-                <select name="<?php echo $instance->get_field_name($storevilla_widgets_name); ?>" id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" class="widefat">
+                <label for="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>"><?php echo esc_html($storevilla_widgets_title); ?> :</label>
+                <select name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)); ?>" id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" class="widefat">
                     <?php foreach ($storevilla_category_list as $storevilla_single_post) { ?>
-                        <option value="<?php echo $storevilla_single_post['value']; ?>" id="<?php echo $instance->get_field_id($storevilla_single_post['label']); ?>" <?php selected($storevilla_single_post['value'], $storevilla_field_value); ?>><?php echo $storevilla_single_post['label']; ?></option>
+                        <option value="<?php echo esc_attr($storevilla_single_post['value']); ?>" id="<?php echo esc_attr($instance->get_field_id($storevilla_single_post['label'])); ?>" <?php selected($storevilla_single_post['value'], $storevilla_field_value); ?>><?php echo esc_html($storevilla_single_post['label']); ?></option>
                     <?php } ?>
                 </select>
 
                 <?php if (isset($storevilla_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $storevilla_widgets_description; ?></small>
+                    <small><?php echo esc_html($storevilla_widgets_description); ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -1905,7 +1903,7 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
         case 'multicheckboxes' :
             
             if( isset( $storevilla_mulicheckbox_title ) ) { ?>
-                <label><?php echo esc_attr( $storevilla_mulicheckbox_title ); ?>:</label>
+                <label><?php echo esc_html( $storevilla_mulicheckbox_title ); ?>:</label>
             <?php }
             echo '<div class="storevilla-multiplecat">';
                 foreach ( $storevilla_widgets_field_options as $storevilla_option_name => $storevilla_option_title) {
@@ -1916,15 +1914,15 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
                     }                
                 ?>
                     <p>
-                        <input id="<?php echo $instance->get_field_id($storevilla_widgets_name); ?>" name="<?php echo $instance->get_field_name($storevilla_widgets_name).'['.$storevilla_option_name.']'; ?>" type="checkbox" value="1" <?php checked('1', $storevilla_field_value[$storevilla_option_name]); ?>/>
-                        <label for="<?php echo $instance->get_field_id($storevilla_option_name); ?>"><?php echo $storevilla_option_title; ?></label>
+                        <input id="<?php echo esc_attr($instance->get_field_id($storevilla_widgets_name)); ?>" name="<?php echo esc_attr($instance->get_field_name($storevilla_widgets_name)).'['.esc_attr($storevilla_option_name).']'; ?>" type="checkbox" value="1" <?php checked('1', $storevilla_field_value[$storevilla_option_name]); ?>/>
+                        <label for="<?php echo esc_attr($instance->get_field_id($storevilla_option_name)); ?>"><?php echo esc_html($storevilla_option_title); ?></label>
                     </p>
                 <?php
                     }
             echo '</div>';
                 if (isset($storevilla_widgets_description)) {
             ?>
-                    <small><em><?php echo $storevilla_widgets_description; ?></em></small>
+                    <small><em><?php echo esc_html($storevilla_widgets_description); ?></em></small>
             <?php
                 }
             
@@ -1942,38 +1940,47 @@ function storevilla_widgets_show_widget_field($instance = '', $widget_field = ''
             if ($value) {
                 $class = ' has-file';
             }
-            $output .= '<div class="sub-option section widget-upload">';
-            $output .= '<label for="'.$instance->get_field_id($storevilla_widgets_name).'">'.$storevilla_widgets_title.'</label><br/>';
-            $output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="' . $name . '" value="' . $value . '" placeholder="' . __('No file chosen', 'storevilla') . '" />' . "\n";
-            
+            ?>
+            <div class="sub-option section widget-upload">
+            <label for="'.$instance->get_field_id($storevilla_widgets_name).'"><?php echo esc_html($storevilla_widgets_title); ?></label><br/>
+            <input id="<?php echo esc_attr($id);; ?>" class="upload<?php echo esc_attr($class); ?>" type="text" name="<?php echo esc_attr($name); ?>" value="<?php esc_url($value); ?>" placeholder="<?php esc_attr_e('No file chosen', 'storevilla'); ?>" />
+            <?php
             if (function_exists('wp_enqueue_media')) {
                 if (( $value == '')) {
-                    $output .= '<input id="upload-' . $id . '" class="upload-button-wdgt button" type="button" value="' . __('Upload', 'storevilla') . '" />' . "\n";
+                    ?>
+                    <input id="upload-<?php echo esc_attr($id); ?>" class="upload-button-wdgt button" type="button" value="<?php esc_attr_e('Upload', 'storevilla'); ?>" />
+                    <?php
                 } else {
-                    $output .= '<input id="remove-' . $id . '" class="remove-file button" type="button" value="' . __('Remove', 'storevilla') . '" />' . "\n";
+                    ?>
+                    <input id="remove-<?php echo esc_attr($id); ?>" class="remove-file button" type="button" value="<?php esc_attr_e('Remove', 'storevilla'); ?>" />
+                    <?php
                 }
             } else {
-                $output .= '<p><i>' . __('Upgrade your version of WordPress for full media support.', 'storevilla') . '</i></p>';
+                ?>
+                <p><i><?php esc_html_e('Upgrade your version of WordPress for full media support.', 'storevilla'); ?></i></p>
+                <?php
             }
-
-            $output .= '<div class="screenshot team-thumb" id="' . $id . '-image">' . "\n";
+            ?>
+            <div class="screenshot team-thumb" id="<?php echo esc_attr($id); ?>-image">
+            <?php
             if ($value != '') {
-                $remove = '<a class="remove-image">Remove</a>';
                 $image = preg_match('/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value);
                 if ($image) {
-                    $output .= '<img src="' . $value . '" alt="" />' . $remove;
+                    ?>
+                    <img src="' . $value . '" alt="<?php the_title_attribute() ?>" /><a class="remove-image"><?php esc_html_e( 'Remove', 'storevilla' ); ?></a>
+                    <?php
                 } else {
                     $parts = explode("/", $value);
                     for ($i = 0; $i < sizeof($parts); ++$i) {
                         $title = $parts[$i];
                     }
-                    $output .= '';
-                    $title = __('View File', 'storevilla');
-                    $output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">' . $title . '</a></span></div>';
+                    ?><div class="no-image"><span class="file_link"><a href="<?php esc_url($value); ?>" target="_blank" rel="external"><?php esc_html_e('View File', 'storevilla'); ?></a></span></div>
+                    <?php
                 }
             }
-            $output .= '</div></div>' . "\n";
-            echo $output;
+            ?>
+            </div></div>
+            <?php
             break;
     }
 }
@@ -2001,7 +2008,7 @@ function storevilla_widgets_updated_field_value($widget_field, $new_field_value)
         return wp_kses_post($new_field_value);
     }
     elseif ($storevilla_widgets_field_type == 'multicheckboxes') {
-        return wp_kses_post($new_field_value);
+        return ($new_field_value);
     }
     else {
         return strip_tags($new_field_value);

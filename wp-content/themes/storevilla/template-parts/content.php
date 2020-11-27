@@ -36,13 +36,13 @@
 		</div>
 
 		<div class="description"><?php the_excerpt(); ?></div>
-		<a href="<?php the_permalink(); ?>" class="sv-btn-countinuereading"><?php _e('countinue reading','storevilla'); ?></a>
+		<a href="<?php the_permalink(); ?>" class="sv-btn-countinuereading"><?php esc_html_e('countinue reading','storevilla'); ?></a>
 		
 		<div class="sv-post-foot">
 			<?php the_tags(''); ?>
 			<div class="post-meta pull-right">
 				<span class="sv-post-author">
-					<?php _e('Post By :','storevilla'); ?>
+					<?php esc_html_e('Post By :','storevilla'); ?>
 					<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>">
 						<?php the_author(); ?>
 					</a>

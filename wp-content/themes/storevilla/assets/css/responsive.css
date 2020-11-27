@@ -71,6 +71,13 @@
 	.product-button-wrap a.villa-details::before {
 		left: 23px;
 	}
+	.site-footer .footer-widgets h3.widget-title{
+		display:block;
+	}
+	.top-footer-wrap{
+		text-align: left;
+		padding-left: 4em;
+	}
 
 }
 @media (max-width: 1024px) {
@@ -89,16 +96,7 @@
 		float: left;
 		width: 100%;
 	}
-	.site-footer .footer-widgets .footer-widget-2, 
-	.site-footer .footer-widgets .footer-widget-3, 
-	.site-footer .footer-widgets .footer-widget-4, 
-	.site-footer .footer-widgets .footer-widget-5 {
-		float: left;
-		margin-right: 3%;
-		padding-top: 35px;
-		width: 22%;
-		margin-left: 0;
-	}
+	
 	.widget_storevilla_contact_info_area ul li {
 		width: auto;
 	}
@@ -119,11 +117,17 @@
 	.woocommerce .cart-collaterals .cross-sells {
 		width: 100%;
 	}
-	.bothsidebar #secondaryright {
-		display: none;
-	}
+	
 	.bothsidebar .store-container-inner {
 		padding-right: 100px;
+	}
+
+	.site-footer .footer-widgets .footer-widget-2,
+	.site-footer .footer-widgets .footer-widget-3,
+	.site-footer .footer-widgets .footer-widget-4,
+	.site-footer .footer-widgets .footer-widget-5{
+		width: 25%;
+	
 	}
 }
 @media (max-width: 800px) {
@@ -132,13 +136,45 @@
 	.widget_storevilla_cat_with_product_widget_area .product-cat-slide li .item-img a.product-image img {
 		width: 100%;
 	}	
+.site-footer .footer-widgets .footer-widget-2, 
+	.site-footer .footer-widgets .footer-widget-3, 
+	.site-footer .footer-widgets .footer-widget-4, 
+	.site-footer .footer-widgets .footer-widget-5 {
+		float: left;
+		margin-right: 3%;
+		padding-top: 35px;
+		width: 22%;
+		margin-left: 0;
+	}
+
 }
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
 	.main-navigation ul {
 		display: block !important;
 	}
+
+	.site-footer .footer-widgets .footer-widget-2,
+	.site-footer .footer-widgets .footer-widget-3,
+	.site-footer .footer-widgets .footer-widget-4,
+	.site-footer .footer-widgets .footer-widget-5{
+		width: 20%;
+		margin: 0;
+		padding: 20px 3em;
+		-webkit-box-sizing: border-box;
+		   -moz-box-sizing: border-box;
+		        box-sizing: border-box;
+	
+	}
+	
 }
-@media (max-width: 768px) {	
+@media (max-width: 768px) {
+	.site-footer .footer-widgets .footer-widget-2,
+	.site-footer .footer-widgets .footer-widget-3,
+	.site-footer .footer-widgets .footer-widget-4,
+	.site-footer .footer-widgets .footer-widget-5{
+		width: 44%;
+	
+	}
 	.main-navigation ul li ul li a {
 		color: #0091D5;
 	}
@@ -183,12 +219,7 @@
 	.widget_storevilla_cat_with_product_widget_area .product-cat-slide li .item-img a.product-image {
 		width: 100%;
 	}
-	.site-footer .footer-widgets .footer-widget-2, 
-	.site-footer .footer-widgets .footer-widget-3, 
-	.site-footer .footer-widgets .footer-widget-4, 
-	.site-footer .footer-widgets .footer-widget-5 {
-		width: 100%;
-	}
+	
 	.header-wrap {
 		text-align: center;
 	}
@@ -412,6 +443,26 @@
 	#primary .site-main {
 		padding-bottom: 15px;
 	}
+	.bothsidebar #secondaryright {
+    float: right;
+    margin-right: 0;
+    position: relative;
+    width: 48%;
+    display: block;
+	}
+	.bothsidebar #secondaryleft {
+    float: left;
+    width: 48%;
+    margin-left: 0;
+    position: static;
+	}
+	.footer-widgets .footer-widget-1{}
+	.footer-widgets .footer-widget-2, .site-footer .footer-widgets .footer-widget-3{
+		width: 50%;
+	}
+	.footer-widgets .footer-widget-4, .site-footer .footer-widgets .footer-widget-5{
+		width: 50%;
+	}
 
 }
 @media (max-width: 600px) {
@@ -504,6 +555,13 @@
 }
 @media (max-width: 480px) {	
 
+	.site-footer .footer-widgets .footer-widget-2, 
+	.site-footer .footer-widgets .footer-widget-3, 
+	.site-footer .footer-widgets .footer-widget-4, 
+	.site-footer .footer-widgets .footer-widget-5 {
+		width: 100%;
+	}
+
 	.woocommerce #content div.product .woocommerce-tabs ul.tabs li, 
 	.woocommerce div.product .woocommerce-tabs ul.tabs li, 
 	.woocommerce-page #content div.product .woocommerce-tabs ul.tabs li, 
@@ -551,6 +609,20 @@
 	.site-content .banner-header-promo .sv-promo-area .promo-wrapper h2 {
 	    font-size: 18px;
 	}
+	.bothsidebar #secondaryright {
+    float: none;
+    margin-right: 0;
+    position: relative;
+    width: 100%;
+    display: block;
+	}
+	.bothsidebar #secondaryleft {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    position: static;
+	}
+	
 }
 @media (max-width: 380px) {
 	.woocommerce-page.columns-3 ul.products li.product, 
