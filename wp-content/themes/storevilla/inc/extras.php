@@ -208,7 +208,7 @@ if(!function_exists ('storevilla_product_search')){
 			$check = '';
 			if(is_search()){
 				if(isset($_GET['term']) && $_GET['term']!=''){
-					$check = $_GET['term'];	
+					$check = sanitize_text_field( wp_unslash( $_GET['term'] ) );	
 				}
 			}
 			$checked = '';
@@ -235,7 +235,7 @@ if(!function_exists ('storevilla_product_search')){
 							 <input type="hidden" name="taxonomy" value="product_cat" />
 						 </div>
 					</form>';			
-			echo $form;
+			return $form;
 		}		 
 	}
 }
@@ -281,7 +281,7 @@ if ( ! function_exists( 'storevilla_payment_logo' ) ) {
 }
 
 /**
- * Store Villa Header Promo Function Area 
+ * StoreVilla Header Promo Function Area 
 */ 
 if ( ! function_exists( 'storevilla_promo_area' ) ) {	
     function storevilla_promo_area() {        
@@ -293,15 +293,15 @@ if ( ! function_exists( 'storevilla_promo_area' ) ) {
     ?>
         <div class="banner-header-promo">
             <div class="store-promo-wrap">
-                <a href="<?php echo $promo_one_link; ?>"/>
-                    <div class="sv-promo-area promo-one" <?php if(!empty( $promo_one_image )) { ?> style="background-image:url(<?php echo $promo_one_image; ?>);"<?php } ?>>
+                <a href="<?php echo esc_url($promo_one_link); ?>"/>
+                    <div class="sv-promo-area promo-one" <?php if(!empty( $promo_one_image )) { ?> style="background-image:url(<?php echo esc_url($promo_one_image); ?>);"<?php } ?>>
                     </div>
                 </a>
             </div>
 
             <div class="store-promo-wrap">
-                <a href="<?php echo $promo_two_link; ?>"/>
-                    <div class="sv-promo-area" <?php if(!empty( $promo_two_image )) { ?> style="background-image:url(<?php echo $promo_two_image; ?>);"<?php } ?>>
+                <a href="<?php echo esc_url($promo_two_link); ?>"/>
+                    <div class="sv-promo-area" <?php if(!empty( $promo_two_image )) { ?> style="background-image:url(<?php echo esc_url($promo_two_image); ?>);"<?php } ?>>
                     </div>
                 </a>
             </div>
@@ -396,11 +396,11 @@ if ( ! function_exists( 'storevilla_display_layout_callback' ) ) {
 if ( ! function_exists( 'storevilla_save_page_settings' ) ) {
     function storevilla_save_page_settings( $post_id ) { 
         global $storevilla_page_layouts, $post; 
-        if ( !isset( $_POST[ 'storevilla_settings_nonce' ] ) || !wp_verify_nonce( $_POST[ 'storevilla_settings_nonce' ], basename( __FILE__ ) ) )
+        if ( !isset( $_POST[ 'storevilla_settings_nonce' ] ) || !wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ 'storevilla_settings_nonce' ] ) ), basename( __FILE__ ) ) )
             return;
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE)  
             return;        
-        if ('page' == $_POST['post_type']) {  
+        if ( isset( $_POST['post_type'] ) && 'page' == sanitize_text_field( wp_unslash( $_POST['post_type'] ) ) ) {  
             if (!current_user_can( 'edit_page', $post_id ) )  
                 return $post_id;  
         } elseif (!current_user_can( 'edit_post', $post_id ) ) {  
@@ -408,7 +408,7 @@ if ( ! function_exists( 'storevilla_save_page_settings' ) ) {
         }    
         foreach ($storevilla_page_layouts as $field) {  
             $old = esc_attr( get_post_meta( $post_id, 'storevilla_page_layouts', true) ); 
-            $new = sanitize_text_field($_POST['storevilla_page_layouts']);
+            $new = isset( $_POST['storevilla_page_layouts'] ) ? sanitize_text_field( wp_unslash( $_POST['storevilla_page_layouts'] ) ) : '';
             if ($new && $new != $old) {  
                 update_post_meta($post_id, 'storevilla_page_layouts', $new);  
             } elseif ('' == $new && $old) {  
@@ -430,10 +430,10 @@ if(class_exists( 'WP_Customize_control')) {
             $name = '_customize-radio-' . $this->id;
             ?>
             <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-            <div id="input_<?php echo $this->id; ?>" class="image">
+            <div id="input_<?php echo esc_attr($this->id); ?>" class="image">
                 <?php foreach ( $this->choices as $value => $label ) : ?>                
-                        <label for="<?php echo $this->id . $value; ?>">
-                            <input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo $this->id . $value; ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
+                        <label for="<?php echo esc_attr($this->id) . esc_attr($value); ?>">
+                            <input class="image-select" type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr($this->id) . esc_attr($value); ?>" <?php $this->link(); checked( $this->value(), $value ); ?>>
                             <img src="<?php echo esc_html( $label ); ?>"/>
                         </label>
                 <?php endforeach; ?>
@@ -570,15 +570,17 @@ if(class_exists( 'WP_Customize_control')) {
                 $ids = explode( ',', $this->value() );
                     foreach ( $ids as $attachment_id ) {
                         $img = wp_get_attachment_image_src( $attachment_id, 'thumbnail' );
-                        echo '<div class="screen-thumb"><img src="' . esc_url($img[0]) . '" /></div>';
+                        if($img){
+                            echo '<div class="screen-thumb"><img src="' . esc_url($img[0]) . '" /></div>';
+                        }
                     }
                 }
             ?>
             </div>
 
-            <input id="edit-gallery" class="button upload_gallery_button" type="button" value="<?php _e('Add/Edit Gallery','storevilla') ?>" />
-            <input id="clear-gallery" class="button upload_gallery_button" type="button" value="<?php _e('Clear','storevilla') ?>" />
-            <input type="hidden" class="gallery_values" <?php echo $this->link() ?> value="<?php echo esc_attr( $this->value() ); ?>">
+            <input id="edit-gallery" class="button upload_gallery_button" type="button" value="<?php esc_attr_e('Add/Edit Gallery','storevilla') ?>" />
+            <input id="clear-gallery" class="button upload_gallery_button" type="button" value="<?php esc_attr_e('Clear','storevilla') ?>" />
+            <input type="hidden" class="gallery_values" <?php $this->link() ?> value="<?php echo esc_attr( $this->value() ); ?>">
         </label>
         <?php
         }
@@ -592,15 +594,15 @@ if(class_exists( 'WP_Customize_control')) {
                 <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
                 <span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
                 <div class="ap-customize-icons">
-                    <div class="selected-icon-preview"><?php if( !empty( $saved_icon_value ) ) { echo '<i class="fa '. $saved_icon_value .'"></i>'; } ?></div>
+                    <div class="selected-icon-preview"><?php if( !empty( $saved_icon_value ) ) { echo '<i class="fa '. esc_attr($saved_icon_value) .'"></i>'; } ?></div>
                     <ul class="icons-list-wrapper">
                         <?php 
                             $storevilla_icons_list = storevilla_icons_array();
                             foreach ( $storevilla_icons_list as $key => $icon_value ) {
                                 if( $saved_icon_value == $icon_value ) {
-                                    echo '<li class="selected"><i class="fa '. $icon_value .'"></i></li>';
+                                    echo '<li class="selected"><i class="fa '. esc_attr($icon_value) .'"></i></li>';
                                 } else {
-                                    echo '<li><i class="fa '. $icon_value .'"></i></li>';
+                                    echo '<li><i class="fa '. esc_attr($icon_value) .'"></i></li>';
                                 }
                             }
                         ?>
@@ -627,16 +629,16 @@ function storevilla_woocommerce_template_loop_product_thumbnail(){ ?>
     <div class="item-img">          
         
         <?php global $post, $product; if ( $product->is_on_sale() ) : 
-            echo apply_filters( 'woocommerce_sale_flash', '<div class="new-label new-top-right">' . __( 'Sale!', 'storevilla' ) . '</div>', $post, $product ); ?>
+            echo apply_filters( 'woocommerce_sale_flash', '<div class="new-label new-top-right">' . esc_html__( 'Sale!', 'storevilla' ) . '</div>', $post, $product ); ?>
         <?php endif; ?>
         <?php
             global $product_label_custom;
             if ($product_label_custom != ''){
-                echo '<div class="new-label new-top-left">'.$product_label_custom.'</div>';
+                echo '<div class="new-label new-top-left">'.esc_html($product_label_custom).'</div>';
             }
         ?>
         <a class="product-image" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
-            <?php echo woocommerce_get_product_thumbnail(); ?>
+            <?php echo wp_kses(woocommerce_get_product_thumbnail(), array( 'img' => array( 'width' => array(), 'height' => array(), 'src' => array(), 'class' => array(), 'alt' => array(), 'srcset' => array(), 'sizes' => array() ) ) ); ?>
         </a>           
     </div>
 <?php 
@@ -679,7 +681,7 @@ function storevilla_woocommerce_template_loop_add_to_cart(){
         <?php woocommerce_template_loop_add_to_cart(); ?>
         
             <a class="villa-details" title="<?php the_title(); ?>" href="<?php the_permalink(); ?>">
-                <?php _e('View Details','storevilla'); ?>
+                <?php esc_html_e('View Details','storevilla'); ?>
             </a>
         
     </div>
@@ -714,7 +716,7 @@ function storevilla_woocommerce_template_loop_quick_info(){
             $url = add_query_arg( 'add_to_wishlist', $product_id );
             ?>
             <li>
-                <a class="link-wishlist" href="<?php echo $url ?>">
+                <a class="link-wishlist" href="<?php echo esc_url($url) ?>">
                     <?php esc_attr_e('Add To Wishlist','storevilla'); ?>
                 </a>
             </li>
@@ -773,9 +775,11 @@ if ( ! function_exists( 'storevilla_woocommerce_output_upsells' ) ) {
  * Woo Commerce Number of Columns filter Function
 **/
 $column = get_theme_mod('storevilla_woocommerce_display_product_number','12');
-add_filter( 'loop_shop_per_page', create_function( '$cols', 'return '.$column.';' ), 20 );
+add_filter( 'loop_shop_per_page','accesspress_loop_shop_per_page', 20 );
 
-
+function accesspress_loop_shop_per_page($cols) {
+    return 12;
+}  
 /**
  * Woo Commerce Add Content Primary Div Function
 **/
@@ -846,7 +850,7 @@ if ( storevilla_is_woocommerce_activated() ) {
 
     if ( ! function_exists( 'storevilla_cart_link' ) ) {
         function storevilla_cart_link() { ?>
-                <a class="cart-contents" href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" title="<?php _e( 'View your shopping cart', 'storevilla' ); ?>">
+                <a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'storevilla' ); ?>">
                     <div class="count">
                         <i class="fa  fa-shopping-basket"></i>
                         <span class="cart-count"><?php echo wp_kses_data( sprintf(  WC()->cart->get_cart_contents_count() ) ); ?></span>

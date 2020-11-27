@@ -1,6 +1,6 @@
 <?php
 /**
- * Store Villa functions and definitions.
+ * StoreVilla functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
@@ -80,6 +80,14 @@ function storevilla_setup() {
 		'quote',
 		'link',
 	) );
+	// Add support for Block Styles.
+	add_theme_support( 'wp-block-styles' );
+
+	// Add support for full and wide align images.
+	add_theme_support( 'align-wide' );
+
+	// Add support for responsive embedded content.
+	add_theme_support( 'responsive-embeds' );
 
 	// Set up the WordPress core custom background feature.
 	add_theme_support( 'custom-background', apply_filters( 'storevilla_custom_background_args', array(
@@ -162,8 +170,10 @@ function storevilla_widgets_init() {
 	for ( $i = 1; $i <= intval( $footer_widget_regions ); $i++ ) {
 		
 		register_sidebar( array(
+			/* translators: %d : fooer id counter */
 			'name' 				=> sprintf( __( 'Footer Widget Area %d', 'storevilla' ), $i ),
 			'id' 				=> sprintf( 'storevillafooter-%d', $i ),
+			/* translators: %d : footer id counter */
 			'description' 		=> sprintf( __( ' Add Widgetized Footer Region %d.', 'storevilla' ), $i ),
 			'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' 		=> '</aside>',
@@ -192,7 +202,7 @@ function storevilla_scripts() {
 
 	/*----------------- Google Fonts --------------------------------------*/
 	$storevilla_font_args = array(
-        'family' => 'Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:300,300i,400,400i,700,700i&amp;subset=vietnamese',
+        'family' => 'Open+Sans:400,300,400,600,600,700|Lato:400,300,300,400,700',
     );
     wp_enqueue_style('google-fonts', add_query_arg( $storevilla_font_args, "//fonts.googleapis.com/css" ) );
 
@@ -202,11 +212,12 @@ function storevilla_scripts() {
 	
 	wp_enqueue_style( 'lightslider', get_template_directory_uri() . '/assets/css/lightslider.css');
 
+    wp_enqueue_style( 'linearicons', get_template_directory_uri() . '/assets/linearicons/style.css');
+
 	wp_enqueue_style( 'storevilla-style', get_stylesheet_uri() );
 
 	wp_enqueue_style( 'storevilla-responsive', get_template_directory_uri() . '/assets/css/responsive.css');
-
-	wp_enqueue_style( 'storevilla-custom', get_template_directory_uri() . '/assets/css/custom.css');
+	wp_enqueue_style( 'storevilla-keyboard', get_template_directory_uri() . '/assets/css/keyboard.css' );
 
 	/*------------------- JavaScript ---------------------------------------*/
 	$storevilla_theme = wp_get_theme();
@@ -218,7 +229,7 @@ function storevilla_scripts() {
 
 	wp_enqueue_script( 'storevilla-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), esc_attr( $theme_version ), true );
 	
-	// wp_enqueue_script( 'retina', get_template_directory_uri() . '/assets/js/retina.js', array('jquery'), esc_attr( $theme_version ), true );
+	wp_enqueue_script( 'retina', get_template_directory_uri() . '/assets/js/retina.js', array('jquery'), esc_attr( $theme_version ), true );
 
 	wp_enqueue_script( 'storevilla-common', get_template_directory_uri() . '/assets/js/common.js', array('jquery'), esc_attr( $theme_version ), true );
 	
@@ -228,6 +239,20 @@ function storevilla_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'storevilla_scripts' );
+
+/**
+ * Enqueue editor styles for Gutenberg
+ */
+function storevilla_editor_styles() {
+	$storevilla_font_args = array(
+        'family' => 'Open+Sans:400,300,400,600,600,700|Lato:400,300,300,400,700',
+    );
+    wp_enqueue_style( 'storevilla-lite-google-fonts', add_query_arg( $storevilla_font_args, "//fonts.googleapis.com/css" ) );
+
+    wp_enqueue_style( 'storevilla-lite-editor-style', get_template_directory_uri() . '/assets/css/editor-style.css' );
+}
+add_action( 'enqueue_block_editor_assets', 'storevilla_editor_styles' );
+
 
 /**
  * Implement the Custom Header feature.
@@ -271,6 +296,11 @@ require ( get_template_directory() . '/inc/storevilla-widget.php' );
 require ( get_template_directory() . '/inc/storevilla-fontawesome.php' );
 
 /**
+ * Dynamic Styles
+*/
+require(get_template_directory() . '/assets/css/style.php' );
+
+/**
  * Load fontawesome fonts value
 */
-require ( get_template_directory() . '/welcome/welcome.php' );
+require ( get_template_directory() . '/inc/welcome/welcome-config.php' );

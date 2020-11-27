@@ -7,11 +7,12 @@ jQuery(document).ready(function ($) {
      //$('.button[name="update_cart"]').prop('disabled', false);
     });
 
-   /* Main Menu Responsive Toggle */   
-   $(".menu-toggle").click(function () {
-       $(this).toggleClass("on");
+   /* Main Menu Responsive Toggle */    
+
+   $('.menu-toggle').on('click keypress',function (e) {
+        $(this).toggleClass("on");
        $("#primary-menu").slideToggle();
-   });   
+    });
 
    /* Mani Banner Slider */
     $('.store-gallery').lightSlider({
