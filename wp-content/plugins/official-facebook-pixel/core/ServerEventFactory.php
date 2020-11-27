@@ -159,6 +159,30 @@ class ServerEventFactory {
         if (!empty($data['last_name'])) {
           $user_data->setLastName($data['last_name']);
         }
+
+        if (!empty($data['phone'])) {
+          $user_data->setPhone($data['phone']);
+        }
+
+        if(!empty($data['state'])){
+          $user_data->setState($data['state']);
+        }
+
+        if(!empty($data['country'])){
+          $user_data->setCountryCode($data['country']);
+        }
+
+        if(!empty($data['city'])){
+          $user_data->setCity($data['city']);
+        }
+
+        if(!empty($data['zip'])){
+          $user_data->setZipCode($data['zip']);
+        }
+
+        if(!empty($data['gender'])){
+          $user_data->setGender($data['gender']);
+        }
       }
 
       $custom_data = $event->getCustomData();
@@ -172,12 +196,28 @@ class ServerEventFactory {
         $custom_data->setValue($data['value']);
       }
 
+      if (!empty($data['contents'])) {
+        $custom_data->setContents($data['contents']);
+      }
+
       if (!empty($data['content_ids'])) {
         $custom_data->setContentIds($data['content_ids']);
       }
 
       if (!empty($data['content_type'])) {
         $custom_data->setContentType($data['content_type']);
+      }
+
+      if (!empty($data['num_items'])) {
+        $custom_data->setNumItems($data['num_items']);
+      }
+
+      if (!empty($data['content_name'])) {
+        $custom_data->setContentName($data['content_name']);
+      }
+
+      if (!empty($data['content_category'])){
+        $custom_data->setContentCategory($data['content_category']);
       }
     } catch (\Exception $e) {
       // Need to log
