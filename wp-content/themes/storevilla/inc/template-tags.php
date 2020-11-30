@@ -541,7 +541,8 @@ if ( ! function_exists( 'storevilla_main_slider' ) ) {
 									<div class="caption-content">
 										<?php echo esc_html(wp_trim_words( get_the_content(), 10)); ?>
 									</div>
-									<a class="slider-button" href="<?php the_permalink(); ?>">
+									<?php $postID = get_the_ID(); ?>
+									<a class="slider-button" href="<?php echo get_post_meta( $postID, 'custom_link', true ); ?>" target="_blank">
 										<?php esc_html_e('View More','storevilla'); ?>
 									</a>								
 								</div>

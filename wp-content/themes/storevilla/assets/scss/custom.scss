@@ -1,0 +1,20 @@
+/* Custom styles for theme */
+
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+@import "base/reset";
+@import "base/typography";
+
+@import "components/banner-slider";
+
+@import "layout/navigation";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+
+@import "pages/product";
+@import "pages/cart";
+@import "pages/checkout";
+@import "pages/about";
+@import "pages/single-post";

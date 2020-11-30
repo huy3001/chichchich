@@ -1,0 +1,15 @@
+/* About page custom styles */
+
+// Social //
+.wp-block-social-links {
+    .site-content & {
+        padding: 0;
+    }
+    .wp-social-link a,
+    .wp-social-link a:active,
+    .wp-social-link a:hover,
+    .wp-social-link a:visited {
+        color: $c-white;
+        fill: none;
+    }
+}
