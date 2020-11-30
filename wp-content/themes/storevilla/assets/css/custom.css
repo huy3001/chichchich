@@ -482,6 +482,13 @@ body {
   fill: none;
 }
 
+/* line 18, scss/pages/_about.scss */
+
+.mapouter,
+.gmap_canvas {
+  max-width: 100%;
+}
+
 /* line 5, scss/pages/_single-post.scss */
 
 .comment-form .form-submit {
