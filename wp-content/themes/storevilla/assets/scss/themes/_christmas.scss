@@ -14,6 +14,11 @@ body.custom-background {
     }
 }
 
+#page {
+    position: relative;
+    overflow: hidden;
+}
+
 // Header //
 .site-header .top-header,
 .header-wrap .search-cart-wrap .advance-search {
