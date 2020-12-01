@@ -55,6 +55,7 @@
 } ?>
 
 <div id="page" class="hfeed site">
+	<div id="snow"></div>
 
 	<?php do_action( 'storevilla_before_header' ); ?>
 
