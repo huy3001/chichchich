@@ -2459,7 +2459,7 @@ widget_storevilla_promo_pages_area css
 .widget_storevilla_blog_widget_area .large-blog-preview .blog-preview-info h2 a {
     font-family: Open Sans;
     font-size: 20px;
-    color: #333333;
+    color: #000000;
     font-weight: 300;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -2477,7 +2477,7 @@ widget_storevilla_promo_pages_area css
 .widget_storevilla_promo_pages_area .promo-area span,
 .widget_storevilla_blog_widget_area .blog-preview .blog-preview-info .blog-preview_desc,
 .widget_storevilla_blog_widget_area .large-blog-preview .blog-preview_desc {
-    color: #8b8b8b;
+    color: #333333;
     font-family: Open Sans;
     font-size: 14px;
     margin-bottom: 15px;
@@ -2613,9 +2613,9 @@ brand-logo-wrap css
     vertical-align: middle;
     text-align: center;
 }
-.brand-logo-wrap .lSSlideWrapper.usingCss {
+/* .brand-logo-wrap .lSSlideWrapper.usingCss {
     height: 100px;
-}
+} */
 /*
 =======================
 end of css
@@ -2709,9 +2709,9 @@ footer css
 .site-footer .footer-widgets .footer-widget-4,
 .site-footer .footer-widgets .footer-widget-5 {
     float: left;
-    /*width: 18%;*/
-    /*margin-left: 0.7%;*/
-    /*padding-top: 35px;*/
+    width: 18%;
+    margin-left: 0.7%;
+    padding-top: 35px;
 }
 .site-footer .bottom-footer-wrap {
     background: #2f2f2f;
