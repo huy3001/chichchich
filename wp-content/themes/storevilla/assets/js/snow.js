@@ -2,6 +2,8 @@
 Copyright (C) 2012 Web3Canvas. All Rights Reserved.
 */
 
+/* Get url of current website */
+const url = window.location.protocol + '//' + window.location.host;
 
 /* Define the number of snow to be used in the animation */
 const NUMBER_OF_snow = 30;
@@ -73,7 +75,7 @@ function createAsnow()
     var image = document.createElement('img');
     
     /* Randomly choose a snow image and assign it to the newly created element */
-    image.src = 'wp-content/themes/storevilla/assets/images/snow/snow' + randomInteger(1, 6) + '.png';
+    image.src = url + '/wp-content/themes/storevilla/assets/images/snow/snow' + randomInteger(1, 6) + '.png';
     
     snowDiv.style.top = "-100px";
 
