@@ -195,20 +195,55 @@ body {
 .site-content .slider-wrapper ul.store-gallery li .banner-slider-info .caption-content {
   color: #f85570;
   font-weight: 700;
+  text-transform: none;
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 22, scss/components/_banner-slider.scss */
+  /* line 23, scss/components/_banner-slider.scss */
 
   .site-content .slider-wrapper ul.store-gallery li .banner-slider-info {
     max-width: 100%;
     padding: 0 10px;
   }
 
-  /* line 29, scss/components/_banner-slider.scss */
+  /* line 30, scss/components/_banner-slider.scss */
 
   .site-content .slider-wrapper .lSPager {
     bottom: 0;
+  }
+}
+
+/* line 5, scss/components/_blog-widget.scss */
+
+.widget_storevilla_blog_widget_area .blog-preview-item .entry-thumb {
+  margin-bottom: 10px;
+}
+
+/* line 4, scss/components/_brand-logo.scss */
+
+.brand-logo-wrap .lSSlideOuter {
+  margin: 0 -5px;
+}
+
+@media only screen and (min-width: 769px) {
+  /* line 4, scss/components/_brand-logo.scss */
+
+  .brand-logo-wrap .lSSlideOuter {
+    margin: 0 -10px;
+  }
+}
+
+/* line 14, scss/components/_brand-logo.scss */
+
+.brand-logo-wrap .brands-logo li {
+  padding: 0 5px;
+}
+
+@media only screen and (min-width: 769px) {
+  /* line 14, scss/components/_brand-logo.scss */
+
+  .brand-logo-wrap .brands-logo li {
+    padding: 0 10px;
   }
 }
 
@@ -487,6 +522,29 @@ body {
 .mapouter,
 .gmap_canvas {
   max-width: 100%;
+}
+
+/* line 48, scss/abstracts/_mixins.scss */
+
+.storevilla-blog:after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+/* line 9, scss/pages/_blog-list.scss */
+
+.storevilla-blog .sv-post-content,
+.storevilla-blog .entry-content {
+  color: #333333;
+  margin-top: 20px;
+}
+
+/* line 16, scss/pages/_blog-list.scss */
+
+.storevilla-blog .sv-post-content .category-name span a,
+.storevilla-blog .sv-post-content .post-meta .date {
+  color: #333333;
 }
 
 /* line 5, scss/pages/_single-post.scss */

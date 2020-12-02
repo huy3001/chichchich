@@ -1584,6 +1584,7 @@ site content slider and ads
 }
 .site-content .slider-wrapper ul.store-gallery li .banner-slider-info h2.caption-title span {
     color: #f85570;
+    margin-right: 4px;
 }
 /***
 pagination-css
@@ -2168,7 +2169,6 @@ product-button-wrap and button css
 .product-button-wrap a.button,
 .product-button-wrap a.added_to_cart {
     float: left;
-    display: inline-block;
     background: #0091d5;
     padding-left: 30px;
     position: relative;
@@ -2339,7 +2339,6 @@ widget_storevilla_cat_with_product_widget_area css
 }
 .widget_storevilla_cat_with_product_widget_area .product-cat-slide .home-block-inner a img {
     width: 100%;
-    vertical-align: top;
     display: block;
     -webkit-transform: translateZ(0px);
     transform: translateZ(0px);
@@ -3383,10 +3382,9 @@ blog post css
     overflow: hidden;
     position: relative;
     display: block;
-    /*margin: 0 0 25px !important;*/
+    margin: 0 0 25px;
 }
 .storevilla-blog figure img {
-    vertical-align: top;
     display: block;
     position: relative;
     z-index: 1;
@@ -4203,9 +4201,6 @@ woocommerce-tabs css
 }
 .woocommerce .woocommerce-tabs p.stars a {
     color: #0091D5;
-}
-.woocommerce .woocommerce-tabs .comment-form-rating {
-
 }
 .woocommerce .woocommerce-tabs .comment-form-rating label,
 .woocommerce .woocommerce-tabs .comment-form-rating .stars {

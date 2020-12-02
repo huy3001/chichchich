@@ -42,3 +42,12 @@ $mq-fixed-value: 1024px;
         }
     }
 }
+
+/* clearfix */
+@mixin clearfix {
+    &:after {
+        content: '';
+        clear: both;
+        display: table;
+    }
+}

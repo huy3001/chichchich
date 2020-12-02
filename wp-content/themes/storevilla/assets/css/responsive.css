@@ -335,6 +335,7 @@
 	=================
 	*/
 	.top-header {
+		display: none;
 		text-align: center;
 	}
 	.top-header .top-navigation {
@@ -349,11 +350,13 @@
 		display: inline-block;
 		float: none;
 	}
-	/*inner pages*/ 
+	/*inner pages*/
+	#primary, 
 	.rightsidebar #primary {
 		width: 100%;
 		float: none;
 	}
+	#secondaryright,
 	.rightsidebar #secondaryright {
 		float: none;
 		width: 100%;
@@ -540,7 +543,7 @@
 		margin: 0 -3px;
 	}
 	.brand-logo-wrap {
-		padding: 40px 0 0;
+		padding: 40px 0;
 	}
 	.main-navigation ul {
 		width: 97%;
