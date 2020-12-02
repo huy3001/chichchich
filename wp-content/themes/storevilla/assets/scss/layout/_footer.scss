@@ -3,7 +3,12 @@
 .site-footer {
     .widget_storevilla_aboutus_info_area {
         .about-logo {
+            margin-bottom: 20px;
             max-width: $logo-size;
+        }
+
+        .about-desc {
+            margin-bottom: 20px;
         }
     }
 
@@ -14,6 +19,10 @@
     }
 
     .widget_media_gallery {
+        .gallery {
+            margin: 0;
+        }
+
         .gallery-item {
             padding: 1px;
         }

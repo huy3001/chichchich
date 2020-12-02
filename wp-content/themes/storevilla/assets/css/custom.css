@@ -339,23 +339,36 @@ body {
 /* line 5, scss/layout/_footer.scss */
 
 .site-footer .widget_storevilla_aboutus_info_area .about-logo {
+  margin-bottom: 20px;
   max-width: 100px;
 }
 
-/* line 11, scss/layout/_footer.scss */
+/* line 10, scss/layout/_footer.scss */
+
+.site-footer .widget_storevilla_aboutus_info_area .about-desc {
+  margin-bottom: 20px;
+}
+
+/* line 16, scss/layout/_footer.scss */
 
 .site-footer .footer-widgets .menu-item {
   text-transform: uppercase;
 }
 
-/* line 17, scss/layout/_footer.scss */
+/* line 22, scss/layout/_footer.scss */
+
+.site-footer .widget_media_gallery .gallery {
+  margin: 0;
+}
+
+/* line 26, scss/layout/_footer.scss */
 
 .site-footer .widget_media_gallery .gallery-item {
   padding: 1px;
 }
 
 @media only screen and (min-width: 1025px) {
-  /* line 25, scss/layout/_footer.scss */
+  /* line 34, scss/layout/_footer.scss */
 
   .site-footer .footer-widgets .footer-widget-2,
   .site-footer .footer-widgets .footer-widget-3,
