@@ -49,6 +49,7 @@ body.custom-background {
 }
 
 // Content //
+#content,
 #primary,
 #secondaryleft,
 #secondaryright {
@@ -83,7 +84,7 @@ body.custom-background {
 .block-title h2, h1.page-title, 
 .woocommerce div.product .product_title, 
 .page h3.entry-title {
-    color: $c-light-yellow;
+    color: $c-crusoe;
 }
 
 .widget_storevilla_latest_product_cat_widget_area .lSSlideOuter, 
