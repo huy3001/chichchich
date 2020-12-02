@@ -625,19 +625,25 @@ body.custom-background:not(.home) {
 
 /* line 23, scss/themes/_christmas.scss */
 
+.header-wrap .site-branding {
+  position: relative;
+}
+
+/* line 27, scss/themes/_christmas.scss */
+
 .site-header .top-header,
 .header-wrap .search-cart-wrap .advance-search {
   border-color: #146B3A;
   background: #fff;
 }
 
-/* line 29, scss/themes/_christmas.scss */
+/* line 33, scss/themes/_christmas.scss */
 
 .header-wrap .search-cart-wrap .advance-search .sv_search_form:before {
   border-color: #146B3A;
 }
 
-/* line 33, scss/themes/_christmas.scss */
+/* line 37, scss/themes/_christmas.scss */
 
 .top-header ul.store-quickinfo li,
 .top-header ul.store-quickinfo li a,
@@ -672,41 +678,49 @@ body.custom-background:not(.home) {
   color: #F8B229;
 }
 
-/* line 48, scss/themes/_christmas.scss */
+/* line 52, scss/themes/_christmas.scss */
+
+#primary,
+#secondaryleft,
+#secondaryright {
+  position: relative;
+}
+
+/* line 58, scss/themes/_christmas.scss */
 
 .slider-wrapper {
   background: #fff;
 }
 
-/* line 52, scss/themes/_christmas.scss */
+/* line 62, scss/themes/_christmas.scss */
 
 .site-content .slider-wrapper .lSPager.lSpg li a,
 .widget_storevilla_testimonial_widget_area .lSPager.lSpg li a {
   background: #146B3A;
 }
 
-/* line 57, scss/themes/_christmas.scss */
+/* line 67, scss/themes/_christmas.scss */
 
 .site-content .slider-wrapper .lSPager.lSpg li:hover a,
 .site-content .slider-wrapper .lSPager.lSpg li.active a {
   background: #BB2528;
 }
 
-/* line 62, scss/themes/_christmas.scss */
+/* line 72, scss/themes/_christmas.scss */
 
 .StoreVillaAction .villa-lSPrev,
 .StoreVillaAction .villa-lSNext {
   border-color: #BB2528;
 }
 
-/* line 67, scss/themes/_christmas.scss */
+/* line 77, scss/themes/_christmas.scss */
 
 .StoreVillaAction .villa-lSPrev:before,
 .StoreVillaAction .villa-lSNext:before {
   color: #BB2528;
 }
 
-/* line 72, scss/themes/_christmas.scss */
+/* line 82, scss/themes/_christmas.scss */
 
 .main-widget-wrap .block-title h2,
 .block-title h2,
@@ -716,7 +730,7 @@ h1.page-title,
   color: #F8B229;
 }
 
-/* line 79, scss/themes/_christmas.scss */
+/* line 89, scss/themes/_christmas.scss */
 
 .widget_storevilla_latest_product_cat_widget_area .lSSlideOuter,
 .widget_storevilla_product_widget_area .lSSlideOuter,
@@ -724,32 +738,33 @@ h1.page-title,
   background: #fff;
 }
 
-/* line 85, scss/themes/_christmas.scss */
+/* line 95, scss/themes/_christmas.scss */
 
 .product-button-wrap a.villa-details {
   background: #165B33;
   border-color: #165B33;
 }
 
-/* line 91, scss/themes/_christmas.scss */
+/* line 101, scss/themes/_christmas.scss */
 
 .site-footer .footer-widgets {
   background: #EA4630;
+  position: relative;
 }
 
-/* line 95, scss/themes/_christmas.scss */
+/* line 106, scss/themes/_christmas.scss */
 
 .site-footer .bottom-footer-wrap {
   background: #BB2528;
 }
 
-/* line 99, scss/themes/_christmas.scss */
+/* line 110, scss/themes/_christmas.scss */
 
 .widget_storevilla_aboutus_info_area ul li a:hover {
   background: #165B33;
 }
 
-/* line 103, scss/themes/_christmas.scss */
+/* line 114, scss/themes/_christmas.scss */
 
 .site-footer .footer-widgets ul li a,
 .site-footer .site-info,
