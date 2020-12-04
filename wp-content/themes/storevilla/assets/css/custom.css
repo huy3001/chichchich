@@ -419,7 +419,14 @@ body {
   color: #0091d5;
 }
 
-/* line 32, scss/pages/_product.scss */
+/* line 24, scss/pages/_product.scss */
+
+.woocommerce-tabs.wc-tabs-wrapper .entry-content img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 37, scss/pages/_product.scss */
 
 .woocommerce ul.products li.product .product-button-wrap a {
   padding-right: 30px;
