@@ -589,3 +589,23 @@ body {
 .comment-form .form-submit {
   margin-top: 20px;
 }
+
+/* line 4, scss/vendors/_plugin.scss */
+
+.phone-vr-img-circle {
+  align-items: center;
+}
+
+/* line 12, scss/vendors/_plugin.scss */
+
+.page .entry-content .apss-social-share,
+.storevilla-blog .entry-content .apss-social-share {
+  margin: 20px 0;
+}
+
+/* line 17, scss/vendors/_plugin.scss */
+
+.page .entry-content .apss-single-icon a,
+.storevilla-blog .entry-content .apss-single-icon a {
+  color: #fff;
+}
