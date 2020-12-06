@@ -15,8 +15,8 @@
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Meta tags for sharing -->
-<meta property="fb:app_id" content="2381269902019530"/>
-<meta property="fb:pages" content="111060810637742"/>
+<meta property="fb:app_id" content="409988653483224"/>
+<meta property="fb:pages" content="107849391107269"/>
 <!-- End meta tags for sharing -->
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
@@ -25,6 +25,30 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+<!-- Facebook analytics -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '409988653483224',
+      cookie     : true,
+      xfbml      : true,
+      version    : '9.0'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- End facebook analytics -->
 
 <?php if ( function_exists( 'wp_body_open' ) ) {
    wp_body_open();
