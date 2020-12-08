@@ -17,14 +17,6 @@
 <!-- Meta tags for sharing -->
 <meta property="fb:app_id" content="2381269902019530"/>
 <meta property="fb:pages" content="111060810637742"/>
-<meta property="og:url" content="<?php bloginfo( 'url' ) ?>"/>
-<meta property="og:type" content="website" />
-<meta property="og:title" content="<?php bloginfo( 'name' ) ?>"/>
-<meta property="og:description" content="<?php bloginfo( 'description' ) ?>"/>
-<meta property="og:image" content="<?php echo get_template_directory_uri() . '/assets/images/fb-share.jpg' ?>"/>
-<meta property="og:image:alt" content="<?php bloginfo( 'description' ) ?>"/>
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:alt" content="<?php bloginfo( 'description' ) ?>">
 <!-- End meta tags for sharing -->
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
