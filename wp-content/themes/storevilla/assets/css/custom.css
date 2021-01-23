@@ -609,3 +609,172 @@ body {
 .storevilla-blog .entry-content .apss-single-icon a {
   color: #fff;
 }
+
+/* line 13, scss/themes/_newyear.scss */
+
+body.custom-background:not(.home) {
+  background: none;
+}
+
+/* line 18, scss/themes/_newyear.scss */
+
+#page {
+  position: relative;
+  overflow: hidden;
+}
+
+/* line 24, scss/themes/_newyear.scss */
+
+.header-wrap .site-branding {
+  position: relative;
+}
+
+/* line 28, scss/themes/_newyear.scss */
+
+.site-header .top-header,
+.header-wrap .search-cart-wrap .advance-search {
+  border-color: #CC232A;
+  background: #fff;
+}
+
+/* line 34, scss/themes/_newyear.scss */
+
+.header-wrap .search-cart-wrap .advance-search .sv_search_form:before {
+  border-color: #CC232A;
+}
+
+/* line 38, scss/themes/_newyear.scss */
+
+.top-header ul.store-quickinfo li,
+.top-header ul.store-quickinfo li a,
+.top-header .top-header-regin ul li a,
+.header-wrap .search-cart-wrap .advance-search .sv_search_product,
+.header-wrap .search-cart-wrap .advance-search .sv_search_form input[type=text],
+.normal-search .search-form .search-field {
+  color: #CC232A;
+}
+
+/* line 57, scss/abstracts/_mixins.scss */
+
+.header-wrap .search-cart-wrap .advance-search .sv_search_form input[type=text]::-webkit-input-placeholder {
+  color: #CC232A;
+}
+
+/* line 60, scss/abstracts/_mixins.scss */
+
+.header-wrap .search-cart-wrap .advance-search .sv_search_form input[type=text]:-moz-placeholder {
+  color: #CC232A;
+}
+
+/* line 63, scss/abstracts/_mixins.scss */
+
+.header-wrap .search-cart-wrap .advance-search .sv_search_form input[type=text]::-moz-placeholder {
+  color: #CC232A;
+}
+
+/* line 66, scss/abstracts/_mixins.scss */
+
+.header-wrap .search-cart-wrap .advance-search .sv_search_form input[type=text]:-ms-input-placeholder {
+  color: #CC232A;
+}
+
+/* line 53, scss/themes/_newyear.scss */
+
+#content,
+#primary,
+#secondaryleft,
+#secondaryright {
+  position: relative;
+}
+
+/* line 60, scss/themes/_newyear.scss */
+
+.slider-wrapper {
+  background: #fff;
+}
+
+/* line 64, scss/themes/_newyear.scss */
+
+.site-content .slider-wrapper .lSPager.lSpg li a,
+.widget_storevilla_testimonial_widget_area .lSPager.lSpg li a {
+  background: #CC232A;
+}
+
+/* line 69, scss/themes/_newyear.scss */
+
+.site-content .slider-wrapper .lSPager.lSpg li:hover a,
+.site-content .slider-wrapper .lSPager.lSpg li.active a {
+  background: #CC9902;
+}
+
+/* line 74, scss/themes/_newyear.scss */
+
+.StoreVillaAction .villa-lSPrev,
+.StoreVillaAction .villa-lSNext {
+  border-color: #A3262A;
+}
+
+/* line 79, scss/themes/_newyear.scss */
+
+.StoreVillaAction .villa-lSPrev:before,
+.StoreVillaAction .villa-lSNext:before {
+  color: #A3262A;
+}
+
+/* line 84, scss/themes/_newyear.scss */
+
+.main-widget-wrap .block-title h2,
+.block-title h2,
+h1.page-title,
+.woocommerce div.product .product_title,
+.page h3.entry-title {
+  color: #F2888B;
+}
+
+/* line 91, scss/themes/_newyear.scss */
+
+.widget_storevilla_latest_product_cat_widget_area .lSSlideOuter,
+.widget_storevilla_product_widget_area .lSSlideOuter,
+.widget_storevilla_blog_widget_area .blog-inner {
+  background: #fff;
+}
+
+/* line 97, scss/themes/_newyear.scss */
+
+.product-button-wrap a.villa-details {
+  background: #F2888B;
+  border-color: #F2888B;
+}
+
+/* line 103, scss/themes/_newyear.scss */
+
+.site-footer .footer-widgets {
+  background: #CC232A;
+  position: relative;
+}
+
+/* line 108, scss/themes/_newyear.scss */
+
+.site-footer .bottom-footer-wrap {
+  background: #A3262A;
+}
+
+/* line 112, scss/themes/_newyear.scss */
+
+.widget_storevilla_aboutus_info_area ul li a:hover {
+  background: #F2888B;
+}
+
+/* line 116, scss/themes/_newyear.scss */
+
+.site-footer .widget_storevilla_aboutus_info_area .about-desc,
+.site-footer .footer-widgets ul li a,
+.site-footer .site-info,
+.widget_nav_menu ul li a:before,
+.widget_pages ul li a:before,
+.widget_recent_entries ul li a:before,
+.widget_meta ul li a:before,
+.widget_archive ul li a:before,
+.widget_categories ul li a:before {
+  color: #F5AC27;
+}
